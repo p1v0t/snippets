@@ -1,0 +1,232 @@
+{
+	"for loop": {
+		"prefix" :[
+			"for"
+		],
+		"body" : [
+			"for(auto ${1:i} = ${2:0}; ${1:i} < ${3:n}; ++${1:i}) {",
+                "   ${0}",
+			"}"
+		]
+	}, 
+
+	"for each loop": {
+		"prefix" :[
+			"fore"
+		],
+		"body" : [
+			"for(auto ${1:item} : ${2:container}) {",
+                "   ${0}",
+			"}"
+		]
+	}, 
+
+	"for structured biding": {
+		"prefix" :[
+			"fors"
+		],
+		"body" : [
+			"for(auto [${1:item}] : ${2:container}) {",
+                "   ${0}",
+			"}"
+		]
+	}, 
+
+	"while loop": {
+		"prefix" :[
+			"while"
+		],
+		"body" : [
+			"while(${1:i} < ${2:n}) {",
+                "   ${0}",
+			"}"
+		]
+	}, 
+
+    "do while loop": {
+		"prefix" :[
+			"do w",
+			"dow"
+		],
+		"body" : [
+			"do {",
+                "   ${0}",
+			"} while(${1:i} < ${2:n});"
+		]
+	}, 
+
+	"if statement": {
+		"prefix" : [
+			"if"
+		],
+		"body": [
+			"if(${1:cond}) {",
+				"${2}",
+			"} ${0}"
+		]
+	},
+
+	"if with initializer": {
+		"prefix" : [
+			"ifi"
+		],
+		"body": [
+			"if(${1:var}; ${2:cond}) {",
+				"${0}",
+			"}"
+		]
+	},
+
+    "else statement": {
+		"prefix" : [
+			"else"
+		],
+		"body": [
+			"else {",
+				"${0}",
+			"}"
+		]
+	},
+
+    "swith statement": {
+		"prefix" : [
+			"swi",
+			"swit",
+			"switch"
+		],
+		"body": [
+			"switch(${1:cond}) {",
+				"${0}",
+			"}"
+		]
+	},
+
+    "case": {
+		"prefix" : [
+			"case"
+		],
+		"body": [
+			"case ${1:expression}:",
+				"${0}",
+				"break;"
+		]
+	},
+
+	"main function without args": {
+		"prefix" : [
+			"main" 
+		],
+		"body": [
+			"int main() {",
+			"${0}",
+			"}"
+		]
+	},
+
+    "main function with args": {
+		"prefix" : [
+			"maina" 
+		],
+		"body": [
+			"int main(int argc, const char *argv[]) {",
+			"   ${0}",
+			"}"
+		]
+	},
+
+   "struct": {
+		"prefix" : [
+			"stru",
+			"struct"
+		],
+		"body": [
+			"struct ${1:name} { ${0} };"
+		]
+	},
+
+	"class" : {
+		"prefix" : [
+			"cla",
+			"class" 
+		], 
+		"body": [
+			"class ${1:name}",
+			"{",
+               "public:",
+			    "${0}",
+			"};"
+		]
+	},
+	
+	"static-cast" : {
+		"prefix" : [
+			"stati"
+		], 
+		"body": [
+			"static_cast<${1:type}>(${2:var})"
+		]
+	},
+
+    "const-cast" : {
+		"prefix" : [
+			"constca",
+			"const_c"
+		], 
+		"body": [
+			"const_cast<${1:type}>(${2:var})"
+		]
+	},
+	
+    "template" : {
+		"prefix" : [
+			"templa"
+		], 
+		"body": [
+			"template <typename T>",
+			"${0}"
+		]
+	},
+	
+    "enumaration" : {
+		"prefix" : [
+			"enum"
+		], 
+		"body": [
+			"enum class ${1:name} { ${0} };"
+		]
+	},
+
+	"variant" : {
+		"prefix" : [
+			"varia",
+			"variant"
+		], 
+		"body": [
+			"std::variant<${1:type}, ${2:type}> ${3:name};"
+		],
+		"decription": "std::variant defined in <variant> "
+	},
+
+    "preprocessor condition" : {
+		"prefix" : [
+			"#if",
+			"guard"
+		], 
+		"body": [
+			"#ifndef ${1:foo}",
+			"#define ${1:foo}",
+			"#endif"
+		]
+	}, 
+
+	"lambda expression": {
+		"prefix" : [
+			"l",
+			"lamb",
+			"lambda"
+		],
+		"body": [
+           "[${1}](${2}){${3}};"
+		]
+	}
+}
