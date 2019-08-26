@@ -45,7 +45,7 @@
 
     "do while loop": {
 		"prefix" :[
-			"do w",
+			"do",
 			"dow"
 		],
 		"body" : [
@@ -90,8 +90,6 @@
 
     "swith statement": {
 		"prefix" : [
-			"swi",
-			"swit",
 			"switch"
 		],
 		"body": [
@@ -136,7 +134,6 @@
 
    "struct": {
 		"prefix" : [
-			"stru",
 			"struct"
 		],
 		"body": [
@@ -146,7 +143,6 @@
 
 	"class" : {
 		"prefix" : [
-			"cla",
 			"class" 
 		], 
 		"body": [
@@ -160,7 +156,7 @@
 	
 	"static-cast" : {
 		"prefix" : [
-			"stati"
+			"static_cast"
 		], 
 		"body": [
 			"static_cast<${1:type}>(${2:var})"
@@ -169,8 +165,7 @@
 
     "const-cast" : {
 		"prefix" : [
-			"constca",
-			"const_c"
+			"const_cast"
 		], 
 		"body": [
 			"const_cast<${1:type}>(${2:var})"
@@ -179,7 +174,7 @@
 	
     "template" : {
 		"prefix" : [
-			"templa"
+			"template"
 		], 
 		"body": [
 			"template <typename T>",
@@ -198,7 +193,6 @@
 
 	"variant" : {
 		"prefix" : [
-			"varia",
 			"variant"
 		], 
 		"body": [
@@ -221,8 +215,6 @@
 
 	"lambda expression": {
 		"prefix" : [
-			"l",
-			"lamb",
 			"lambda"
 		],
 		"body": [
