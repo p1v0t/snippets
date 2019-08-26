@@ -1,0 +1,160 @@
+{
+	"minimum cmake requirement": {
+		"prefix" :[
+			"cmake_minimum"
+		],
+		"body" : [
+			"cmake_minimum_required(VERSION ${1:version})"
+		]
+	},
+
+"project": {
+		"prefix" :[
+			"project"
+		],
+		"body" : [
+         "project(${1:projname}",
+            "DESCRIPTION \"${2:description}\"",
+            "HOMEPAGE_URL ${3:humapage}",
+            "LANGUAGES CXX)"
+		]
+	},
+
+"add_executable": {
+		"prefix" :[
+			"add_executable"
+		],
+		"body" : [
+            "add_executable(${1})"
+		]
+},
+
+"add_library": {
+		"prefix" :[
+			"add_library"
+		],
+		"body" : [
+            "add_library(${1})"
+		]
+	},
+
+"add_subdirectory": {
+		"prefix" :[
+			"add_subdirectory"
+		],
+		"body" : [
+            "add_subdirectory(${0})"
+		]
+	},
+
+"target_link_libraries": {
+		"prefix" :[
+			"target_link"
+		],
+		"body" : [
+            "target_link_libraries(${1}, PRIVATE ${2})"
+		]
+	},
+"target_compile_features": {
+		"prefix" :[
+			"target_compile"
+		],
+		"body" : [
+            "target_compile_features(${1:myLibrary} PUBLIC cxx_constexpr cxx_std_17 ${2:otherOptions})"
+		]
+	},
+
+"include": {
+		"prefix" :[
+			"include"
+		],
+		"body" : [
+			"include(${1})"
+		]
+	},
+
+"find package": {
+		"prefix" :[
+			"find_package"
+		],
+		"body" : [
+			"find_package(${1:PackageName} QUIET REQUIRED COMPONENTS ${1:components})"
+		]
+	},
+
+"find Boost": {
+		"prefix" :[
+			"find_package(Boo"
+		],
+		"body" : [
+			"find_package(Boost QUIET REQUIRED COMPONENTS ${1:program_options})",
+            "target_link_libraries(target PRIVATE Boost::${1:program_options})"
+		]
+	},
+
+"option": {
+		"prefix" :[
+			"option"
+		],
+		"body" : [
+			"option(${1})"
+		]
+	},  
+
+"if": {
+		"prefix" :[
+			"if"
+		],
+		"body" : [
+			"if(${1})",
+			"${2}",
+			"endif()"
+		]
+	},
+
+"elseif": {
+		"prefix" :[
+			"elseif"
+		],
+		"body" : [
+			"elseif(${1})",
+			"${2}"
+		]
+	},
+
+"else": {
+		"prefix" :[
+			"else"
+		],
+		"body" : [
+			"else()",
+			"${1}"
+		]
+	},
+"set": {
+		"prefix" :[
+			"set"
+		],
+		"body" : [
+			"set(${1})"
+		]
+	},
+"list": {
+		"prefix" :[
+			"list"
+		],
+		"body" : [
+			"list(APPEND ${1:list} ${2:element})"
+		]
+
+},
+"message": {
+		"prefix" :[
+			"message"
+		],
+		"body" : [
+			"message(\"${1}\")"
+		]
+}
+
+}
