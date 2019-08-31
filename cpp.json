@@ -21,7 +21,7 @@
 		]
 	}, 
 
-	"for structured biding": {
+	"for structured binding": {
 		"prefix" :[
 			"fors"
 		],
@@ -198,7 +198,7 @@
 		"body": [
 			"std::variant<${1:type}, ${2:type}> ${3:name};"
 		],
-		"decription": "std::variant defined in <variant> "
+		"description": "std::variant defined in <variant> "
 	},
 
     "preprocessor condition" : {
@@ -220,5 +220,15 @@
 		"body": [
            "[${1}](${2}){${3}};"
 		]
+	},
+
+	"static assertion": {
+		"prefix" : [
+			"static_assert"
+		],
+		"body": [
+           "static_assert(${1});"
+		],
+		"description": "static assert witout message is a C++17 feature"
 	}
 }
