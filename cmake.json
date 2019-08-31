@@ -15,7 +15,7 @@
 		"body" : [
          "project(${1:projname}",
             "DESCRIPTION \"${2:description}\"",
-            "HOMEPAGE_URL ${3:humapage}",
+            "HOMEPAGE_URL https://github.com/p1v0t/${3:reponame}",
             "LANGUAGES CXX)"
 		]
 	},
@@ -52,7 +52,7 @@
 			"target_link"
 		],
 		"body" : [
-            "target_link_libraries(${1}, PRIVATE ${2})"
+            "target_link_libraries(${1} PRIVATE ${2})"
 		]
 	},
 "target_compile_features": {
@@ -154,6 +154,98 @@
 		],
 		"body" : [
 			"message(\"${1}\")"
+		]
+} ,
+
+"source directory variable": {
+		"prefix" :[
+			"CMAKE_SOURCE_DIR"
+		],
+		"body" : [
+			"CMAKE_SOURCE_DIR"
+		]
+},
+
+"current source directory variable": {
+		"prefix" :[
+			"CMAKE_CURRENT_SOURCE_DIR"
+		],
+		"body" : [
+			"CMAKE_CURRENT_SOURCE_DIR"
+		]
+},
+" binary directory variable": {
+		"prefix" :[
+			"CMAKE_BINARY_DIR"
+		],
+		"body" : [
+			"CMAKE_BINARY_DIR"
+		]
+},
+
+"current binary directory variable": {
+		"prefix" :[
+			"CMAKE_CURRENT_BINARY_DIR"
+		],
+		"body" : [
+			"CMAKE_CURRENT_BINARY_DIR"
+		]
+},
+
+"module path variable (list)": {
+		"prefix" :[
+			"CMAKE_MODULE_PATH"
+		],
+		"body" : [
+			"CMAKE_MODULE_PATH"
+		]
+},
+"UNIX": {
+		"prefix" :[
+			"UNIX"
+		],
+		"body" : [
+			"UNIX"
+		]
+},
+
+"WIN32": {
+		"prefix" :[
+			"WIN32"
+		],
+		"body" : [
+			"WIN32"
+		]
+}, 
+
+"file: download": {
+		"prefix" :[
+			"file(DOWNLOAD"
+		],
+		"body" : [
+			"file(DOWNLOAD <url> <destination>)"
+		]
+}, 
+
+"FetchContent Module" : {
+		"prefix" :[
+	      "FetchContent"
+		],
+		"body" : [
+			"include(FetchContent)",
+			"",
+			"set(FETCHCONTENT_QUIET ON)",
+
+			"FetchContent_Declare(${1:dependency}",
+			"GIT_REPOSITORY https://www.github.com/address/toRepo",
+			"GIT TAG",
+			")",
+			"",
+			"FetchContent_GetProperties(${1:dependency})",
+			"if(NOT ${1:dependency}_POPULATED)",
+			"   FetchContent_Populate(${1:dependency} QUITE )",
+			"   add_subdirectory(${1:dependency}_SOURCE_DIR  ${1:dependency}_BINARY_DIR)",
+			"endif()"
 		]
 }
 
