@@ -237,14 +237,13 @@
 			"set(FETCHCONTENT_QUIET ON)",
 
 			"FetchContent_Declare(${1:dependency}",
-			"GIT_REPOSITORY https://www.github.com/address/toRepo",
-			"GIT TAG",
-			")",
+			"    GIT_REPOSITORY https://www.github.com/address/toRepo",
+			"    GIT_TAG )",
 			"",
 			"FetchContent_GetProperties(${1:dependency})",
 			"if(NOT ${1:dependency}_POPULATED)",
-			"   FetchContent_Populate(${1:dependency} QUITE )",
-			"   add_subdirectory(${1:dependency}_SOURCE_DIR  ${1:dependency}_BINARY_DIR)",
+			"    FetchContent_Populate(${1:dependency} QUITE)",
+			"    add_subdirectory(${${1:dependency}_SOURCE_DIR} ${${1:dependency}_BINARY_DIR)}",
 			"endif()"
 		]
 }
