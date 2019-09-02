@@ -81,6 +81,19 @@
 			"find_package(${1:PackageName} QUIET REQUIRED COMPONENTS ${1:components})"
 		]
 	},
+"find program": {
+		"prefix" :[
+			"find_program"
+		],
+		"body" : [
+			"find_program(${1:programname}",
+		     "    NAMES ${1:programname}",
+		     "    PATHS /usr/local/bin /usr/bin)",
+		     "if(NOT ${1:programname}-NOTFOUND)",
+		     "    message(FATAL_ERROR \"${1:programname} not fount\")",
+		     "endif()"
+		]
+	},
 
 "find Boost": {
 		"prefix" :[
@@ -238,7 +251,9 @@
 
 			"FetchContent_Declare(${1:dependency}",
 			"    GIT_REPOSITORY https://www.github.com/address/toRepo",
-			"    GIT_TAG )",
+			"    GIT_TAG",
+			"    GIT_PROGRESS OFF",
+			"    GIT_SHALLOW ON )",
 			"",
 			"FetchContent_GetProperties(${1:dependency})",
 			"if(NOT ${1:dependency}_POPULATED)",
