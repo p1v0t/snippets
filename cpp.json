@@ -37,7 +37,7 @@
 			"while"
 		],
 		"body" : [
-			"while(${1:i} < ${2:n}) {",
+			"while(${1:condition}) {",
                 "   ${0}",
 			"}"
 		]
@@ -230,5 +230,30 @@
            "static_assert(${1});"
 		],
 		"description": "static assert witout message is a C++17 feature"
-	}
+	},
+	"nodiscard tag": {
+		"prefix" :[
+			"nodiscard"
+		],
+		"body" : [
+                "[[nodiscard]] ${0}"
+		]
+	} ,
+       "fallthrough tag": {
+		"prefix" :[
+			"fallthrough"
+		],
+		"body" : [
+                "[[fallthrough]] ${0}"
+		],
+		"description": "use this with the switch-case statement"
+	},
+       "maybe_unused tag": {
+		"prefix" :[
+			"maybe_unused"
+		],
+		"body" : [
+                "[[maybe_unused]] ${0}"
+		]
+	} 
 }
