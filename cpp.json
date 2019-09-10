@@ -178,8 +178,10 @@
 		], 
 		"body": [
 			"template <typename T>",
-			"${0}"
-		]
+			"typename std::enable_if_t<std::${1:sometrait}_v<T>, T>",
+			"${3:function(T s)}"
+		],
+		"description": "enable if in return type, _t ad _v requires c++14"
 	},
 	
     "enumaration" : {
