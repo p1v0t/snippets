@@ -38,7 +38,7 @@
 		],
 		"body" : [
 			"while(${1:condition}) {",
-                "   ${0}",
+                        "   ${0}",
 			"}"
 		]
 	}, 
@@ -50,8 +50,8 @@
 		],
 		"body" : [
 			"do {",
-                "   ${0}",
-			"} while(${1:i} < ${2:n});"
+                        "   ${0}",
+			"} while(${1:condition});"
 		]
 	}, 
 
@@ -184,6 +184,17 @@
 		"description": "enable if in return type, _t ad _v requires c++14"
 	},
 	
+"variadic template usage": {
+		"prefix" :[
+			"variadic"
+		],
+		"body" : [
+                "template <typename ... Args>",
+		"audo make_vector(const Args& ... elems) {",
+		"return std::vector(elems ...); }"
+		],
+		"description": "reminder for usage of the variadic template"
+	},
     "enumaration" : {
 		"prefix" : [
 			"enum"
@@ -256,6 +267,19 @@
 		],
 		"body" : [
                 "[[maybe_unused]] ${0}"
+		]
+	}, 
+
+  	"try-catch block" : {
+		"prefix" :[
+			"try"
+		],
+		"body" : [
+                "try {",
+                "    ${1}",
+		"} catch (...) {",
+		"    ${2}", 
+		"}"
 		]
 	} 
 }
