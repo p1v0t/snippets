@@ -1,0 +1,98 @@
+
+{
+	"function definition": {
+			"prefix" :[
+				"alias"
+			],
+			"body" : [
+				"alias ${1:ls}='${2:ls --Al}'"
+			]
+	},
+	"shebang": {
+		"prefix" :[
+			"shebang"
+		],
+		"body" : [
+			"#!/usr/bin/${1:bash}"
+		]
+	},
+        "if statement": {
+		"prefix" :[
+			"if"
+		],
+		"body" : [
+			"# [ -a file ], true if fileexists",
+			"# [ -d file ],  true if directory exist",
+			"# [ -L file ], or -h, true if file exist and a symbolic link",
+			"# [ -x file ], true if file exist and an executable",
+			"# [ -w file ], true if file exist and writable",
+			"# [ -O file ], true if file exist and owned by the user",
+			"# [ -G file ], true if file exist and owned by the group",
+			"# [ -N file ], true if file exist and has been modified after latest read",
+			"# [ file OP file2 ] where OP is -nt -ot, newer than, older than",
+			"# [ arg1 OP arg1 ] ,aritmetic ops, -eq, -ne, -lt,-le,-gt,-ge",
+			"# [ -N file ], true if file exist and has been modified after latest read",
+
+			"if   [[ ${1:condition} ]]; then ${2:action}",
+			"elif [[ ${1:condition} ]]; then ${3:action}",
+			"else",
+			"  ${3:action}",
+			"fi"
+			],
+			"description": "probably abuse of the snippet but I occasianlly forget this flags "
+
+	},
+	"for statement": {
+		"prefix" :[
+			"for"
+		],
+		"body" : [
+			"for (( ${1:i=0}; ${1:i=0} ${2:<num}; ++${1:i=0} )) ;",
+			"do",
+			"  ${2:body} ;",
+			"done"
+		]
+	},
+
+        "test statement": {
+		"prefix" :[
+			"test"
+		],
+		"body" : [
+			"test ${1:condition} && ( ${2:action} )"
+			]
+	},
+        "case statement": {
+		"prefix" :[
+			"case"
+		],
+		"body" : [
+			"case ${1:variable} in",
+			"[${1:pattern}] *) # ')' to terminate pattern list | is for append a other pattern",
+			"  ${2:action}",
+			";;",
+			"esac"
+			]
+	},
+	"function template": {
+		"prefix" :[
+			"function"
+		],
+		"body" : [
+			"${1:func_name}() {",
+		        "  ${2:body}",
+			")"
+			]
+	},
+	"add the path": {
+		"prefix" :[
+			"path",
+			"PATH"
+		],
+		"body" : [
+			"export PATH=$HOME/${1:here}:$PATH"
+			]
+	}
+
+}
+
