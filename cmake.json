@@ -8,297 +8,312 @@
 		]
 	},
 
-"project": {
-		"prefix" :[
-			"project"
-		],
-		"body" : [
-         "project(${1:projname}",
-            "DESCRIPTION \"${2:description}\"",
-            "HOMEPAGE_URL https://github.com/p1v0t/${3:reponame}",
-            "LANGUAGES CXX)"
-		]
+	"project": {
+			"prefix" :[
+				"project"
+			],
+			"body" : [
+		 "project(${1:projname}",
+		    "DESCRIPTION \"${2:description}\"",
+		    "HOMEPAGE_URL https://github.com/p1v0t/${3:reponame}",
+		    "LANGUAGES CXX)"
+			]
+		},
+
+	"add_executable": {
+			"prefix" :[
+				"add_executable"
+			],
+			"body" : [
+		    "add_executable(${1})"
+			]
 	},
 
-"add_executable": {
-		"prefix" :[
-			"add_executable"
-		],
-		"body" : [
-            "add_executable(${1})"
-		]
-},
+	"add_library": {
+			"prefix" :[
+				"add_library"
+			],
+			"body" : [
+		    "add_library(${1})"
+			]
+		},
 
-"add_library": {
-		"prefix" :[
-			"add_library"
-		],
-		"body" : [
-            "add_library(${1})"
-		]
+	"add_subdirectory": {
+			"prefix" :[
+				"add_subdirectory"
+			],
+			"body" : [
+		    "add_subdirectory(${0})"
+			]
+		},
+
+	"target_link_libraries": {
+			"prefix" :[
+				"target_link"
+			],
+			"body" : [
+		    "target_link_libraries(${1} PRIVATE ${2})"
+			]
+		},
+	"target_compile_features": {
+			"prefix" :[
+				"target_compile"
+			],
+			"body" : [
+		    "target_compile_features(${1:myLibrary} PUBLIC cxx_constexpr cxx_std_17 ${2:otherOptions})"
+			]
+		},
+
+	"target_include_directories": {
+			"prefix" :[
+				"target_include"
+			],
+			"body" : [
+		    "target_include_directories(${1:target} PUBLIC ${2:directory})"
+			]
+		},
+
+	"include": {
+			"prefix" :[
+				"include"
+			],
+			"body" : [
+				"include(${1})"
+			]
+		},
+
+	"find package": {
+			"prefix" :[
+				"find_package"
+			],
+			"body" : [
+				"find_package(${1:PackageName} QUIET REQUIRED COMPONENTS ${1:components})"
+			]
+		},
+	"find program": {
+			"prefix" :[
+				"find_program"
+			],
+			"body" : [
+				"find_program(${1:programname}",
+			     "    NAMES ${1:programname}",
+			     "    PATHS /usr/local/bin /usr/bin)",
+			     " ",
+			     "if(NOT ${1:programname}-NOTFOUND)",
+			     "    message(FATAL_ERROR \"${1:programname} not fount\")",
+			     "endif()"
+			]
+		},
+	"find library": {
+			"prefix" :[
+				"find_library"
+			],
+			"body" : [
+				"find_library(${1:libraryName}",
+			     "    NAMES ${1:libraryName}",
+			     "    PATHS /usr/local/lib /usr/lib)",
+			     " ",
+			     "if(NOT ${1:libraryName}-NOTFOUND)",
+			     "    message(FATAL_ERROR \"${1:libraryName} not fount\")",
+			     "endif()"
+			]
+		},
+
+
+	"find Boost": {
+			"prefix" :[
+				"find_package(Boo"
+			],
+			"body" : [
+				"find_package(Boost QUIET REQUIRED COMPONENTS ${1:program_options})",
+		    "target_link_libraries(target PRIVATE Boost::${1:program_options})"
+			]
+		},
+
+	"option": {
+			"prefix" :[
+				"option"
+			],
+			"body" : [
+				"option(${1})"
+			]
+		},  
+
+	"if": {
+			"prefix" :[
+				"if"
+			],
+			"body" : [
+				"if(${1})",
+				"${2}",
+				"endif()"
+			]
+		},
+
+	"elseif": {
+			"prefix" :[
+				"elseif"
+			],
+			"body" : [
+				"elseif(${1})",
+				"${2}"
+			]
+		},
+
+	"else": {
+			"prefix" :[
+				"else"
+			],
+			"body" : [
+				"else()",
+				"${1}"
+			]
+		},
+	"set": {
+			"prefix" :[
+				"set"
+			],
+			"body" : [
+				"set(${1})"
+			]
+		},
+
+	"compilation database magic": {
+			"prefix" :[
+				"compilation",
+				"database"
+			],
+			"body" : [
+				"set(CMAKE_EXPORT_COMPILE_COMMANDS ON)",
+				"${0}"
+			]
+		},
+
+	"list": {
+			"prefix" :[
+				"list"
+			],
+			"body" : [
+				"list(APPEND ${1:list} ${2:element})"
+			]
+
+	},
+	"message": {
+			"prefix" :[
+				"message"
+			],
+			"body" : [
+				"message(\"${1}\")"
+			]
+	} ,
+
+	"source directory variable": {
+			"prefix" :[
+				"CMAKE_SOURCE_DIR"
+			],
+			"body" : [
+				"CMAKE_SOURCE_DIR ${0}"
+			]
 	},
 
-"add_subdirectory": {
-		"prefix" :[
-			"add_subdirectory"
-		],
-		"body" : [
-            "add_subdirectory(${0})"
-		]
+	"current source directory variable": {
+			"prefix" :[
+				"CMAKE_CURRENT_SOURCE_DIR"
+			],
+			"body" : [
+				"CMAKE_CURRENT_SOURCE_DIR ${0}"
+			]
+	},
+	" binary directory variable": {
+			"prefix" :[
+				"CMAKE_BINARY_DIR"
+			],
+			"body" : [
+				"CMAKE_BINARY_DIR ${0}"
+			]
 	},
 
-"target_link_libraries": {
-		"prefix" :[
-			"target_link"
-		],
-		"body" : [
-            "target_link_libraries(${1} PRIVATE ${2})"
-		]
-	},
-"target_compile_features": {
-		"prefix" :[
-			"target_compile"
-		],
-		"body" : [
-            "target_compile_features(${1:myLibrary} PUBLIC cxx_constexpr cxx_std_17 ${2:otherOptions})"
-		]
+	"current binary directory variable": {
+			"prefix" :[
+				"CMAKE_CURRENT_BINARY_DIR"
+			],
+			"body" : [
+				"CMAKE_CURRENT_BINARY_DIR ${0}"
+			]
 	},
 
-"include": {
-		"prefix" :[
-			"include"
-		],
-		"body" : [
-			"include(${1})"
-		]
+	"module path variable (list)": {
+			"prefix" :[
+				"CMAKE_MODULE_PATH"
+			],
+			"body" : [
+				"CMAKE_MODULE_PATH ${0}"
+			]
+	},
+	"UNIX": {
+			"prefix" :[
+				"UNIX"
+			],
+			"body" : [
+				"UNIX ${0}"
+			]
 	},
 
-"find package": {
-		"prefix" :[
-			"find_package"
-		],
-		"body" : [
-			"find_package(${1:PackageName} QUIET REQUIRED COMPONENTS ${1:components})"
-		]
+	"WIN32": {
+			"prefix" :[
+				"WIN32"
+			],
+			"body" : [
+				"WIN32 ${0}"
+			]
+	}, 
+
+	"file: download": {
+			"prefix" :[
+				"file(DOWNLOAD"
+			],
+			"body" : [
+				"file(DOWNLOAD <url> <destination>)"
+			]
+	}, 
+
+	"FetchContent Module" : {
+			"prefix" :[
+		      "FetchContent"
+			],
+			"body" : [
+				"include(FetchContent)",
+				"",
+				"set(FETCHCONTENT_QUIET ON)",
+
+				"FetchContent_Declare(${1:dependency}",
+				"    GIT_REPOSITORY https://www.github.com/address/toRepo",
+				"    GIT_TAG",
+				"    GIT_PROGRESS OFF",
+				"    GIT_SHALLOW ON )",
+				"",
+				"FetchContent_GetProperties(${1:dependency})",
+				"if(NOT ${1:dependency}_POPULATED)",
+				"    FetchContent_Populate(${1:dependency} QUITE)",
+				"    add_subdirectory(${${1:dependency}_SOURCE_DIR} ${${1:dependency}_BINARY_DIR)}",
+				"endif()"
+			]
 	},
-"find program": {
-		"prefix" :[
-			"find_program"
-		],
-		"body" : [
-			"find_program(${1:programname}",
-		     "    NAMES ${1:programname}",
-		     "    PATHS /usr/local/bin /usr/bin)",
-		     " ",
-		     "if(NOT ${1:programname}-NOTFOUND)",
-		     "    message(FATAL_ERROR \"${1:programname} not fount\")",
-		     "endif()"
-		]
-	},
-"find library": {
-		"prefix" :[
-			"find_library"
-		],
-		"body" : [
-			"find_library(${1:libraryName}",
-		     "    NAMES ${1:libraryName}",
-		     "    PATHS /usr/local/lib /usr/lib)",
-		     " ",
-		     "if(NOT ${1:libraryName}-NOTFOUND)",
-		     "    message(FATAL_ERROR \"${1:libraryName} not fount\")",
-		     "endif()"
-		]
-	},
-
-
-"find Boost": {
-		"prefix" :[
-			"find_package(Boo"
-		],
-		"body" : [
-			"find_package(Boost QUIET REQUIRED COMPONENTS ${1:program_options})",
-            "target_link_libraries(target PRIVATE Boost::${1:program_options})"
-		]
-	},
-
-"option": {
-		"prefix" :[
-			"option"
-		],
-		"body" : [
-			"option(${1})"
-		]
-	},  
-
-"if": {
-		"prefix" :[
-			"if"
-		],
-		"body" : [
-			"if(${1})",
-			"${2}",
-			"endif()"
-		]
-	},
-
-"elseif": {
-		"prefix" :[
-			"elseif"
-		],
-		"body" : [
-			"elseif(${1})",
-			"${2}"
-		]
-	},
-
-"else": {
-		"prefix" :[
-			"else"
-		],
-		"body" : [
-			"else()",
-			"${1}"
-		]
-	},
-"set": {
-		"prefix" :[
-			"set"
-		],
-		"body" : [
-			"set(${1})"
-		]
-	},
-
-"compilation database magic": {
-		"prefix" :[
-			"compilation",
-			"database"
-		],
-		"body" : [
-			"set(CMAKE_EXPORT_COMPILE_COMMANDS ON)",
-			"${0}"
-		]
-	},
-
-"list": {
-		"prefix" :[
-			"list"
-		],
-		"body" : [
-			"list(APPEND ${1:list} ${2:element})"
-		]
-
-},
-"message": {
-		"prefix" :[
-			"message"
-		],
-		"body" : [
-			"message(\"${1}\")"
-		]
-} ,
-
-"source directory variable": {
-		"prefix" :[
-			"CMAKE_SOURCE_DIR"
-		],
-		"body" : [
-			"CMAKE_SOURCE_DIR ${0}"
-		]
-},
-
-"current source directory variable": {
-		"prefix" :[
-			"CMAKE_CURRENT_SOURCE_DIR"
-		],
-		"body" : [
-			"CMAKE_CURRENT_SOURCE_DIR ${0}"
-		]
-},
-" binary directory variable": {
-		"prefix" :[
-			"CMAKE_BINARY_DIR"
-		],
-		"body" : [
-			"CMAKE_BINARY_DIR ${0}"
-		]
-},
-
-"current binary directory variable": {
-		"prefix" :[
-			"CMAKE_CURRENT_BINARY_DIR"
-		],
-		"body" : [
-			"CMAKE_CURRENT_BINARY_DIR ${0}"
-		]
-},
-
-"module path variable (list)": {
-		"prefix" :[
-			"CMAKE_MODULE_PATH"
-		],
-		"body" : [
-			"CMAKE_MODULE_PATH ${0}"
-		]
-},
-"UNIX": {
-		"prefix" :[
-			"UNIX"
-		],
-		"body" : [
-			"UNIX ${0}"
-		]
-},
-
-"WIN32": {
-		"prefix" :[
-			"WIN32"
-		],
-		"body" : [
-			"WIN32 ${0}"
-		]
-}, 
-
-"file: download": {
-		"prefix" :[
-			"file(DOWNLOAD"
-		],
-		"body" : [
-			"file(DOWNLOAD <url> <destination>)"
-		]
-}, 
-
-"FetchContent Module" : {
-		"prefix" :[
-	      "FetchContent"
-		],
-		"body" : [
-			"include(FetchContent)",
-			"",
-			"set(FETCHCONTENT_QUIET ON)",
-
-			"FetchContent_Declare(${1:dependency}",
-			"    GIT_REPOSITORY https://www.github.com/address/toRepo",
-			"    GIT_TAG",
-			"    GIT_PROGRESS OFF",
-			"    GIT_SHALLOW ON )",
-			"",
-			"FetchContent_GetProperties(${1:dependency})",
-			"if(NOT ${1:dependency}_POPULATED)",
-			"    FetchContent_Populate(${1:dependency} QUITE)",
-			"    add_subdirectory(${${1:dependency}_SOURCE_DIR} ${${1:dependency}_BINARY_DIR)}",
-			"endif()"
-		]
-},
-"conan basic setup": {
-		"prefix" :[
-			"conan_basic_setup()"
-		],
-		"body" : [
-                         "include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)",
-                         "conan_basic_setup()",
-			 "${0}"
-		]
-} 
+	"conan basic setup": {
+			"prefix" :[
+				"conan_basic_setup()",
+				"conan"
+			],
+			"body" : [
+				"set(CMAKE_MODULE_PATH \"${CMAKE_SOURCE_DIR}/cmake\")",
+				"include(conan)",
+				"conan_cmake_run(CONANFILE conanfile.txt",
+				"BASIC_SETUP",
+				"NO_OUTPUT_DIRS",
+				"PROFILE_AUTO",
+				"CMAKE_TARGETS",
+				"BUILD missing)"
+			]
+	} 
 
 }
