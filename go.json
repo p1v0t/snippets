@@ -1,0 +1,148 @@
+{
+	"main function": {
+		"prefix" :[
+			"main"
+		],
+		"body" : [
+                         "func main() {",
+                         "${0}",
+                         "}"
+		]
+	},
+	"import statement": {
+			"prefix" :[
+				"import"
+			],
+			"body" : [
+							 "import \"${0}\""
+			]
+		},
+	"function": {
+			"prefix" :[
+				"func"
+			],
+			"body" : [
+							 "func ${1:name}(${2:arg}) ${3:(rettypes)} {",
+							 "${0}",
+							 "}"
+			]
+		},
+	"var statement": {
+			"prefix" :[
+				"var"
+			],
+			"body" : [
+				"var (",
+							 "${0}",
+				 ")"
+			]
+		},
+	"const statement": {
+			"prefix" :[
+				"const"
+			],
+			"body" : [
+				"const (",
+							 "${0}",
+				 ")"
+			]
+		},
+	"for statement": {
+			"prefix" :[
+				"for"
+			],
+			"body" : [
+				"for ${1:i}:=${2:0}; ${1:i} < ${3:n}; ${1:i}++ {",
+							 "${0}",
+				 "}"
+			]
+		},
+	"while statement": {
+			"prefix" :[
+				"while"
+			],
+			"body" : [
+				"for ${1:condition} {",
+							 "${0}",
+				 "}"
+			]
+		},
+	"if statement": {
+			"prefix" :[
+				"if"
+			],
+			"body" : [
+				"if ${1:condition} {",
+							"${0}",
+							"}"
+			]
+		}
+	,
+	"if with initializer": {
+			"prefix" :[
+				"ifi"
+			],
+			"body" : [
+				"if ${1:v := x}; ${2:condition} {",
+							 "${0}",
+				 "}"
+			]
+		},
+	"else statement": {
+			"prefix" :[
+				"else"
+			],
+			"body" : [
+				"else {",
+							"${0}",
+				"}"
+			]
+		},
+	"switch statement": {
+			"prefix" :[
+				"switch"
+			],
+			"body" : [
+				"switch ${1:condition} {",
+							"${0}",
+				"default:",
+							" ",
+				"}"
+			]
+		},
+
+	"switch with initializer": {
+			"prefix" :[
+				"switchi"
+			],
+			"body" : [
+				"switch ${1:v := x}; ${2:condition} {",
+							"${0}",
+				"default:",
+							" ",
+				"}"
+			]
+		},
+	"case": {
+			"prefix" :[
+				"case"
+			],
+			"body" : [
+				"case ${1:v := x}:",
+							"${0}",
+				"}"
+			]
+		},
+	"struct": {
+			"prefix" :[
+				"struct"
+			],
+			"body" : [
+				"type ${1:name} struct {",
+							"${0}",
+				"}"
+			]
+		}
+}
+
+
