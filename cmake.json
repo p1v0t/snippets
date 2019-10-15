@@ -313,7 +313,16 @@
 				"PROFILE_AUTO",
 				"CMAKE_TARGETS",
 				"BUILD missing)"
+			],
+		"description": "Conan.cmake file should be \"${CMAKE_SOURCE_DIR}/cmake\")"
+	},
+    "set target properties": {
+			"prefix" :[
+				"set_target_properties"
+			],
+			"body" : [
+                "set_target_properties(${1:target} ${2:propertyVariable} ${3:value})",
+				"${0}"
 			]
 	} 
-
 }
