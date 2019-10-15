@@ -1,0 +1,139 @@
+{
+	"class" : {
+		"prefix" : [
+			"class" 
+		], 
+		"body": [
+			"class ${1:name}",
+			"{",
+               "public:",
+			    "${0}",
+			"};"
+		]
+	},
+    "struct" : {
+		"prefix" : [
+			"struct" 
+		], 
+		"body": [
+			"struct ${1:name}",
+			"{",
+			    "${0}",
+			"};"
+		]
+	},
+    "enum" : {
+		"prefix" : [
+			"enum" 
+		], 
+		"body": [
+			"enum ${1:name}",
+			"{",
+			    "${0}",
+			"};"
+		]
+	},
+
+	"function" : {
+		"prefix" : [
+			"function" 
+		], 
+		"body": [
+			"${1:visibility} ${2:retType} ${3:name}(${4:params})",
+			"{",
+			    "${0}",
+			"};"
+		]
+	},
+	"for loop": {
+		"prefix" :[
+			"for"
+		],
+		"body" : [
+			"for(auto ${1:i} = ${2:0}; ${1:i} < ${3:n}; ${4}) {",
+                         "   ${0}",
+			"}"
+		]
+	}, 
+
+	"for each loop": {
+		"prefix" :[
+			"forech"
+		],
+		"body" : [
+			"for(var ${1:item} in ${2:container}) {",
+                         "   ${0}",
+			"}"
+		]
+	},
+	"while loop": {
+		"prefix" :[
+			"while"
+		],
+		"body" : [
+			"while(${1:conditon}) {",
+            "   ${0}",
+			"}"
+		]
+	},
+
+	"if statement": {
+		"prefix" :[
+			"if"
+		],
+		"body" : [
+			"if (${1:conditon}) {",
+            "   ${0}",
+			"}"
+		]
+	}, 
+   "else statement": {
+		"prefix" :[
+			"else"
+		],
+		"body" : [
+			"else {",
+            "   ${0}",
+			"}"
+		]
+	}, 
+   "switch statement": {
+		"prefix" :[
+			"switch"
+		],
+		"body" : [
+			"switch (${1:tag}){",
+            "   ${0}",
+			"}"
+		]
+	}, 
+   "case statement": {
+		"prefix" :[
+			"case"
+		],
+		"body" : [
+			"case ${1:tag}: ",
+            "   ${0}"
+		]
+	},
+   "try statement": {
+		"prefix" :[
+			"try"
+		],
+		"body" : [
+			"try {",
+            "   ${0}",
+			"}"
+		]
+	},
+    "catch statement": {
+		"prefix" :[
+			"catch"
+		],
+		"body" : [
+			"catch (Exception ${1:ex}){",
+            "   ${0}",
+			"}"
+		]
+	}
+}
