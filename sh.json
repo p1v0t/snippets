@@ -13,7 +13,7 @@
 			"shebang"
 		],
 		"body" : [
-			"#!/bin/${1:sh}"
+			"#!/usr/bin/env ${1:sh}"
 		]
 	},
         "if statement": {
