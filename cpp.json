@@ -77,6 +77,17 @@
 		]
 	},
 
+    "compile-time if with initializer": {
+		"prefix" : [
+			"if constexpr"
+		],
+		"body": [
+			"if constexpr(${1:var}; ${2:cond}) {",
+				"${0}",
+			"}"
+		]
+	},
+
     "else statement": {
 		"prefix" : [
 			"else"
@@ -184,17 +195,18 @@
 		"description": "enable if in return type, _t ad _v requires c++14"
 	},
 	
-"variadic template usage": {
+    "variadic template usage": {
 		"prefix" :[
 			"variadic"
 		],
 		"body" : [
                 "template <typename ... Args>",
-		"audo make_vector(const Args& ... elems) {",
+		"auto make_vector(const Args& ... elems) {",
 		"return std::vector(elems ...); }"
 		],
 		"description": "reminder for usage of the variadic template"
 	},
+
     "enumaration" : {
 		"prefix" : [
 			"enum"
@@ -225,6 +237,21 @@
 			"#endif"
 		]
 	}, 
+
+    "has_include macro" : {
+		"prefix" : [
+			"__has_include",
+			"has_include"
+		], 
+		"body": [
+			"#if __has_include(<${1:header}>)",
+			 "  #include <${1}>",
+			"#endif",
+			"   ${0}"
+		],
+		"description": "__has_include is a C++17 feature"
+	}, 
+
 
 	"lambda expression": {
 		"prefix" : [
