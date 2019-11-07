@@ -73,6 +73,17 @@
 			]
 		},
 
+     "add header only dependency": {
+			"prefix" :[
+				"header-only"
+			],
+			"body" : [
+		    "add_library(${1:target} INTERFACE)",
+			"target_sources(${1:target} INTERFACE ${2:path/source.hpp})  ",
+		    "target_include_directories(${1:target} INTERFACE ${3:path/to/source})"
+			]
+		},
+
 	"include": {
 			"prefix" :[
 				"include"
@@ -181,6 +192,7 @@
 	"compilation database magic": {
 			"prefix" :[
 				"compilation",
+				"cmake_export_compile_commands",
 				"database"
 			],
 			"body" : [
