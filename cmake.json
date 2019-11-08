@@ -336,5 +336,15 @@
                 "set_target_properties(${1:target} ${2:propertyVariable} ${3:value})",
 				"${0}"
 			]
+	},
+
+   	"add_compile_options": {
+			"prefix" :[
+				"add_compile_options"
+			],
+			"body" : [
+                "add_compile_options(${1:-Wall}) ${0}"
+			]
 	} 
+
 }

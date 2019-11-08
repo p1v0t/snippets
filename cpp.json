@@ -271,7 +271,27 @@
 		],
 		"description": "static assert witout message is a C++17 feature"
 	},
-	"nodiscard tag": {
+
+    "noreturn attribute": {
+		"prefix" :[
+			"noreturn"
+		],
+		"body" : [
+                "[[noreturn]] ${0}"
+		]
+	} ,
+
+   "deprecated attribute": {
+		"prefix" :[
+			"deprecated"
+		],
+		"body" : [
+                "[[deprecated]] ${0}"
+		]
+	} ,
+
+
+	"nodiscard attribute": {
 		"prefix" :[
 			"nodiscard"
 		],
@@ -279,7 +299,8 @@
                 "[[nodiscard]] ${0}"
 		]
 	} ,
-       "fallthrough tag": {
+
+   "fallthrough attribute": {
 		"prefix" :[
 			"fallthrough"
 		],
@@ -288,7 +309,8 @@
 		],
 		"description": "use this with the switch-case statement"
 	},
-       "maybe_unused tag": {
+
+    "maybe_unused attribute": {
 		"prefix" :[
 			"maybe_unused"
 		],
