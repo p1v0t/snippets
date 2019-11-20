@@ -1,350 +1,1194 @@
 {
-	"minimum cmake requirement": {
-		"prefix" :[
-			"cmake_minimum"
-		],
-		"body" : [
-			"cmake_minimum_required(VERSION ${1:version})"
-		]
-	},
+    "minimum cmake requirement": {
+        "prefix": [
+            "cmake_minimum"
+        ],
+        "body": [
+            "cmake_minimum_required(VERSION ${1:version})"
+        ]
+    },
 
-	"project": {
-			"prefix" :[
-				"project"
-			],
-			"body" : [
-		 "project(${1:projname}",
-		    "DESCRIPTION \"${2:description}\"",
-		    "HOMEPAGE_URL https://github.com/p1v0t/${3:reponame}",
-		    "LANGUAGES CXX)"
-			]
-		},
+    "project": {
+        "prefix": [
+            "project"
+        ],
+        "body": [
+            "project(${1:projname}",
+            "DESCRIPTION \"${2:description}\"",
+            "HOMEPAGE_URL https://github.com/p1v0t/${3:reponame}",
+            "LANGUAGES CXX)"
+        ]
+    },
 
-	"add_executable": {
-			"prefix" :[
-				"add_executable"
-			],
-			"body" : [
-		    "add_executable(${1})"
-			]
-	},
+    "add_executable": {
+        "prefix": [
+            "add_executable"
+        ],
+        "body": [
+            "add_executable(${1})${0}"
+        ]
+    },
 
-	"add_library": {
-			"prefix" :[
-				"add_library"
-			],
-			"body" : [
-		    "add_library(${1})"
-			]
-		},
+    "add_library": {
+        "prefix": [
+            "add_library"
+        ],
+        "body": [
+            "add_library(${1})${0}"
+        ]
+    },
 
-	"add_subdirectory": {
-			"prefix" :[
-				"add_subdirectory"
-			],
-			"body" : [
-		    "add_subdirectory(${0})"
-			]
-		},
+    "add_subdirectory": {
+        "prefix": [
+            "add_subdirectory"
+        ],
+        "body": [
+            "add_subdirectory(${0})"
+        ]
+    },
 
-	"target_link_libraries": {
-			"prefix" :[
-				"target_link"
-			],
-			"body" : [
-		    "target_link_libraries(${1} PRIVATE ${2})"
-			]
-		},
-	"target_compile_features": {
-			"prefix" :[
-				"target_compile"
-			],
-			"body" : [
-		    "target_compile_features(${1:myLibrary} PUBLIC cxx_constexpr cxx_std_17 ${2:otherOptions})"
-			]
-		},
+    "target_link_libraries": {
+        "prefix": [
+            "target_link"
+        ],
+        "body": [
+            "target_link_libraries(${1} PRIVATE ${2})"
+        ]
+    },
+    "target_compile_features": {
+        "prefix": [
+            "target_compile"
+        ],
+        "body": [
+            "target_compile_features(${1:myLibrary} PUBLIC cxx_constexpr cxx_std_17 ${2:otherOptions})"
+        ]
+    },
 
-	"target_include_directories": {
-			"prefix" :[
-				"target_include"
-			],
-			"body" : [
-		    "target_include_directories(${1:target} PUBLIC ${2:directory})"
-			]
-		},
+    "target_include_directories": {
+        "prefix": [
+            "target_include"
+        ],
+        "body": [
+            "target_include_directories(${1:target} PUBLIC ${2:directory})"
+        ]
+    },
 
-     "add header only dependency": {
-			"prefix" :[
-				"header-only"
-			],
-			"body" : [
-		    "add_library(${1:target} INTERFACE)",
-			"target_sources(${1:target} INTERFACE ${2:path/source.hpp})  ",
-		    "target_include_directories(${1:target} INTERFACE ${3:path/to/source})"
-			]
-		},
+    "add header only dependency": {
+        "prefix": [
+            "header-only"
+        ],
+        "body": [
+            "add_library(${1:target} INTERFACE)",
+            "target_sources(${1:target} INTERFACE ${2:path/source.hpp})  ",
+            "target_include_directories(${1:target} INTERFACE ${3:path/to/source})"
+        ]
+    },
 
-	"include": {
-			"prefix" :[
-				"include"
-			],
-			"body" : [
-				"include(${1})"
-			]
-		},
+    "include": {
+        "prefix": [
+            "include"
+        ],
+        "body": [
+            "include(${1})"
+        ]
+    },
 
-	"find package": {
-			"prefix" :[
-				"find_package"
-			],
-			"body" : [
-				"find_package(${1:PackageName} QUIET REQUIRED COMPONENTS ${1:components})"
-			]
-		},
-	"find program": {
-			"prefix" :[
-				"find_program"
-			],
-			"body" : [
-				"find_program(${1:programname}",
-			     "    NAMES ${1:programname}",
-			     "    PATHS /usr/local/bin /usr/bin)",
-			     " ",
-			     "if(NOT ${1:programname}-NOTFOUND)",
-			     "    message(FATAL_ERROR \"${1:programname} not fount\")",
-			     "endif()"
-			]
-		},
-	"find library": {
-			"prefix" :[
-				"find_library"
-			],
-			"body" : [
-				"find_library(${1:libraryName}",
-			     "    NAMES ${1:libraryName}",
-			     "    PATHS /usr/local/lib /usr/lib)",
-			     " ",
-			     "if(NOT ${1:libraryName}-NOTFOUND)",
-			     "    message(FATAL_ERROR \"${1:libraryName} not fount\")",
-			     "endif()"
-			]
-		},
+    "find package": {
+        "prefix": [
+            "find_package"
+        ],
+        "body": [
+            "find_package(${1:PackageName} QUIET REQUIRED COMPONENTS ${1:components})"
+        ]
+    },
+    "find program": {
+        "prefix": [
+            "find_program"
+        ],
+        "body": [
+            "find_program(${1:programname}",
+            "    NAMES ${1:programname}",
+            "    PATHS /usr/local/bin /usr/bin)",
+            " ",
+            "if(NOT ${1:programname}-NOTFOUND)",
+            "    message(FATAL_ERROR \"${1:programname} not fount\")",
+            "endif()"
+        ]
+    },
+    "find library": {
+        "prefix": [
+            "find_library"
+        ],
+        "body": [
+            "find_library(${1:libraryName}",
+            "    NAMES ${1:libraryName}",
+            "    PATHS /usr/local/lib /usr/lib)",
+            " ",
+            "if(NOT ${1:libraryName}-NOTFOUND)",
+            "    message(FATAL_ERROR \"${1:libraryName} not fount\")",
+            "endif()"
+        ]
+    },
 
 
-	"find Boost": {
-			"prefix" :[
-				"find_package(Boo"
-			],
-			"body" : [
-				"find_package(Boost QUIET REQUIRED COMPONENTS ${1:program_options})",
-		    "target_link_libraries(target PRIVATE Boost::${1:program_options})"
-			]
-		},
+    "find Boost": {
+        "prefix": [
+            "find_package(Boo"
+        ],
+        "body": [
+            "find_package(Boost QUIET REQUIRED COMPONENTS ${1:program_options})",
+            "target_link_libraries(target PRIVATE Boost::${1:program_options})"
+        ]
+    },
 
-	"option": {
-			"prefix" :[
-				"option"
-			],
-			"body" : [
-				"option(${1})"
-			]
-		},  
+    "option": {
+        "prefix": [
+            "option"
+        ],
+        "body": [
+            "option(${1})"
+        ]
+    },
 
-	"if": {
-			"prefix" :[
-				"if"
-			],
-			"body" : [
-				"if(${1})",
-				"${2}",
-				"endif()"
-			]
-		},
+    "if": {
+        "prefix": [
+            "if"
+        ],
+        "body": [
+            "if(${1})",
+            "${2}",
+            "endif()"
+        ]
+    },
 
-	"elseif": {
-			"prefix" :[
-				"elseif"
-			],
-			"body" : [
-				"elseif(${1})",
-				"${2}"
-			]
-		},
+    "elseif": {
+        "prefix": [
+            "elseif"
+        ],
+        "body": [
+            "elseif(${1})",
+            "${2}"
+        ]
+    },
 
-	"else": {
-			"prefix" :[
-				"else"
-			],
-			"body" : [
-				"else()",
-				"${1}"
-			]
-		},
-	"set": {
-			"prefix" :[
-				"set"
-			],
-			"body" : [
-				"set(${1})"
-			]
-		},
+    "else": {
+        "prefix": [
+            "else"
+        ],
+        "body": [
+            "else()",
+            "${1}"
+        ]
+    },
+    "set": {
+        "prefix": [
+            "set"
+        ],
+        "body": [
+            "set(${1})"
+        ]
+    },
 
-	"compilation database magic": {
-			"prefix" :[
-				"compilation",
-				"cmake_export_compile_commands",
-				"database"
-			],
-			"body" : [
-				"set(CMAKE_EXPORT_COMPILE_COMMANDS ON)",
-				"${0}"
-			]
-		},
+    "compilation database magic": {
+        "prefix": [
+            "compilation",
+            "cmake_export_compile_commands",
+            "database"
+        ],
+        "body": [
+            "set(CMAKE_EXPORT_COMPILE_COMMANDS ON)",
+            "${0}"
+        ]
+    },
 
-	"list": {
-			"prefix" :[
-				"list"
-			],
-			"body" : [
-				"list(APPEND ${1:list} ${2:element})"
-			]
+    "list": {
+        "prefix": [
+            "list"
+        ],
+        "body": [
+            "list(APPEND ${1:list} ${2:element})"
+        ]
 
-	},
-	"message": {
-			"prefix" :[
-				"message"
-			],
-			"body" : [
-				"message(\"${1}\")"
-			]
-	} ,
+    },
+    "message": {
+        "prefix": [
+            "message"
+        ],
+        "body": [
+            "message(\"${1}\")"
+        ]
+    },
 
-	"source directory variable": {
-			"prefix" :[
-				"CMAKE_SOURCE_DIR"
-			],
-			"body" : [
-				"CMAKE_SOURCE_DIR ${0}"
-			]
-	},
+    "source directory variable": {
+        "prefix": [
+            "CMAKE_SOURCE_DIR"
+        ],
+        "body": [
+            "CMAKE_SOURCE_DIR ${0}"
+        ]
+    },
 
-	"current source directory variable": {
-			"prefix" :[
-				"CMAKE_CURRENT_SOURCE_DIR"
-			],
-			"body" : [
-				"CMAKE_CURRENT_SOURCE_DIR ${0}"
-			]
-	},
-	" binary directory variable": {
-			"prefix" :[
-				"CMAKE_BINARY_DIR"
-			],
-			"body" : [
-				"CMAKE_BINARY_DIR ${0}"
-			]
-	},
+    "current source directory variable": {
+        "prefix": [
+            "CMAKE_CURRENT_SOURCE_DIR"
+        ],
+        "body": [
+            "CMAKE_CURRENT_SOURCE_DIR ${0}"
+        ]
+    },
+    " binary directory variable": {
+        "prefix": [
+            "CMAKE_BINARY_DIR"
+        ],
+        "body": [
+            "CMAKE_BINARY_DIR ${0}"
+        ]
+    },
 
-	"current binary directory variable": {
-			"prefix" :[
-				"CMAKE_CURRENT_BINARY_DIR"
-			],
-			"body" : [
-				"CMAKE_CURRENT_BINARY_DIR ${0}"
-			]
-	},
+    "current binary directory variable": {
+        "prefix": [
+            "CMAKE_CURRENT_BINARY_DIR"
+        ],
+        "body": [
+            "CMAKE_CURRENT_BINARY_DIR ${0}"
+        ]
+    },
 
-	"module path variable (list)": {
-			"prefix" :[
-				"CMAKE_MODULE_PATH"
-			],
-			"body" : [
-				"CMAKE_MODULE_PATH ${0}"
-			]
-	},
-	"UNIX": {
-			"prefix" :[
-				"UNIX"
-			],
-			"body" : [
-				"UNIX ${0}"
-			]
-	},
+    "add third party module to module list": {
+        "prefix": [
+            "CMAKE_MODULE_PATH"
+        ],
+        "body": [
 
-	"WIN32": {
-			"prefix" :[
-				"WIN32"
-			],
-			"body" : [
-				"WIN32 ${0}"
-			]
-	}, 
+            "list(APPEND CMAKE_MODULE_PATH \"${CMAKE_CURRENT_LIST_DIR}/${1:CMake}\")",
+            "${0}"
+        ]
+    },
 
-	"file: download": {
-			"prefix" :[
-				"file(DOWNLOAD"
-			],
-			"body" : [
-				"file(DOWNLOAD <url> <destination>)"
-			]
-	}, 
+    "UNIX": {
+        "prefix": [
+            "UNIX"
+        ],
+        "body": [
+            "UNIX ${0}"
+        ]
+    },
 
-	"FetchContent Module" : {
-			"prefix" :[
-		      "FetchContent"
-			],
-			"body" : [
-				"include(FetchContent)",
-				"",
-				"set(FETCHCONTENT_QUIET ON)",
+    "WIN32": {
+        "prefix": [
+            "WIN32"
+        ],
+        "body": [
+            "WIN32 ${0}"
+        ]
+    },
 
-				"FetchContent_Declare(${1:dependency}",
-				"    GIT_REPOSITORY https://www.github.com/address/toRepo",
-				"    GIT_TAG",
-				"    GIT_PROGRESS OFF",
-				"    GIT_SHALLOW ON )",
-				"",
-				"FetchContent_GetProperties(${1:dependency})",
-				"if(NOT ${1:dependency}_POPULATED)",
-				"    FetchContent_Populate(${1:dependency} QUITE)",
-				"    add_subdirectory(${${1:dependency}_SOURCE_DIR} ${${1:dependency}_BINARY_DIR)}",
-				"endif()"
-			]
-	},
-	"conan basic setup": {
-			"prefix" :[
-				"conan_basic_setup()",
-				"conan"
-			],
-			"body" : [
-				"set(CMAKE_MODULE_PATH \"${CMAKE_SOURCE_DIR}/cmake\")",
-				"include(conan)",
-				"conan_cmake_run(CONANFILE conanfile.txt",
-				"BASIC_SETUP",
-				"NO_OUTPUT_DIRS",
-				"PROFILE_AUTO",
-				"CMAKE_TARGETS",
-				"BUILD missing)"
-			],
-		"description": "Conan.cmake file should be \"${CMAKE_SOURCE_DIR}/cmake\")"
-	},
+    "file: download": {
+        "prefix": [
+            "file(DOWNLOAD"
+        ],
+        "body": [
+            "file(DOWNLOAD <url> <destination>)"
+        ]
+    },
+
+    "FetchContent Module": {
+        "prefix": [
+            "FetchContent"
+        ],
+        "body": [
+            "include(FetchContent)",
+            "",
+            "set(FETCHCONTENT_QUIET ON)",
+
+            "FetchContent_Declare(${1:dependency}",
+            "    GIT_REPOSITORY https://www.github.com/address/toRepo",
+            "    GIT_TAG",
+            "    GIT_PROGRESS OFF",
+            "    GIT_SHALLOW ON )",
+            "",
+            "FetchContent_GetProperties(${1:dependency})",
+            "if(NOT ${1:dependency}_POPULATED)",
+            "    FetchContent_Populate(${1:dependency} QUITE)",
+            "    add_subdirectory(${${1:dependency}_SOURCE_DIR} ${${1:dependency}_BINARY_DIR)}",
+            "endif()"
+        ]
+    },
+    "conan basic setup": {
+        "prefix": [
+            "conan_basic_setup()",
+            "conan"
+        ],
+        "body": [
+            "set(CMAKE_MODULE_PATH \"${CMAKE_SOURCE_DIR}/cmake\")",
+            "include(conan)",
+            "conan_cmake_run(CONANFILE conanfile.txt",
+            "BASIC_SETUP",
+            "NO_OUTPUT_DIRS",
+            "PROFILE_AUTO",
+            "CMAKE_TARGETS",
+            "BUILD missing)"
+        ],
+        "description": "Conan.cmake file should be \"${CMAKE_SOURCE_DIR}/cmake\")"
+    },
     "set target properties": {
-			"prefix" :[
-				"set_target_properties"
-			],
-			"body" : [
-                "set_target_properties(${1:target} ${2:propertyVariable} ${3:value})",
-				"${0}"
-			]
-	},
+        "prefix": [
+            "set_target_properties"
+        ],
+        "body": [
+            "set_target_properties(${1:target} ${2:propertyVariable} ${3:value})",
+            "${0}"
+        ]
+    },
 
-   	"add_compile_options": {
-			"prefix" :[
-				"add_compile_options"
-			],
-			"body" : [
-                "add_compile_options(${1:-Wall}) ${0}"
-			]
-	} 
+    "add_compile_options": {
+        "prefix": [
+            "add_compile_options"
+        ],
+        "body": [
+            "add_compile_options(${1:-Wall}) ${0}"
+        ]
+    },
+    "add_compile_definitions": {
+        "prefix": [
+            "add_compile_definitions"
+        ],
+        "body": [
+            "add_compile_definitions(${0})"
+        ]
+    },
+    "add_custom_command": {
+        "prefix": [
+            "add_custom_command"
+        ],
+        "body": [
+            "add_custom_command(${0})"
+        ]
+    },
+    "add_custom_target": {
+        "prefix": [
+            "add_custom_target"
+        ],
+        "body": [
+            "add_custom_target(${0})"
+        ]
+    },
+    "add_definitions": {
+        "prefix": [
+            "add_definitions"
+        ],
+        "body": [
+            "add_definitions(${0})"
+        ]
+    },
+    "add_dependencies": {
+        "prefix": [
+            "add_dependencies"
+        ],
+        "body": [
+            "add_dependencies(${0})"
+        ]
+    },
+    "add_library": {
+        "prefix": [
+            "add_library"
+        ],
+        "body": [
+            "add_library(${0})"
+        ]
+    },
+    "add_link_options": {
+        "prefix": [
+            "add_link_options"
+        ],
+        "body": [
+            "add_link_options(${0})"
+        ]
+    },
+    "add_test": {
+        "prefix": [
+            "add_test"
+        ],
+        "body": [
+            "add_test(${0})"
+        ]
+    },
+    "aux_source_directory": {
+        "prefix": [
+            "aux_source_directory"
+        ],
+        "body": [
+            "aux_source_directory(${0})"
+        ]
+    },
+    "break": {
+        "prefix": [
+            "break"
+        ],
+        "body": [
+            "break(${0})"
+        ]
+    },
+    "build_command": {
+        "prefix": [
+            "build_command"
+        ],
+        "body": [
+            "build_command(${0})"
+        ]
+    },
+    "build_name": {
+        "prefix": [
+            "build_name"
+        ],
+        "body": [
+            "build_name(${0})"
+        ]
+    },
+    "cmake_host_system_information": {
+        "prefix": [
+            "cmake_host_system_information"
+        ],
+        "body": [
+            "cmake_host_system_information(${0})"
+        ]
+    },
+    "cmake_parse_arguments": {
+        "prefix": [
+            "cmake_parse_arguments"
+        ],
+        "body": [
+            "cmake_parse_arguments(${0})"
+        ]
+    },
+    "cmake_policy": {
+        "prefix": [
+            "cmake_policy"
+        ],
+        "body": [
+            "cmake_policy(${0})"
+        ]
+    },
+    "configure_file": {
+        "prefix": [
+            "configure_file"
+        ],
+        "body": [
+            "configure_file(${0})"
+        ]
+    },
+    "continue": {
+        "prefix": [
+            "continue"
+        ],
+        "body": [
+            "continue(${0})"
+        ]
+    },
+    "create_test_sourcelist": {
+        "prefix": [
+            "create_test_sourcelist"
+        ],
+        "body": [
+            "create_test_sourcelist(${0})"
+        ]
+    },
+    "ctest_build": {
+        "prefix": [
+            "ctest_build"
+        ],
+        "body": [
+            "ctest_build(${0})"
+        ]
+    },
+    "ctest_configure": {
+        "prefix": [
+            "ctest_configure"
+        ],
+        "body": [
+            "ctest_configure(${0})"
+        ]
+    },
+    "ctest_coverage": {
+        "prefix": [
+            "ctest_coverage"
+        ],
+        "body": [
+            "ctest_coverage(${0})"
+        ]
+    },
+    "ctest_empty_binary_directory": {
+        "prefix": [
+            "ctest_empty_binary_directory"
+        ],
+        "body": [
+            "ctest_empty_binary_directory(${0})"
+        ]
+    },
+    "ctest_memcheck": {
+        "prefix": [
+            "ctest_memcheck"
+        ],
+        "body": [
+            "ctest_memcheck(${0})"
+        ]
+    },
+    "ctest_read_custom_files": {
+        "prefix": [
+            "ctest_read_custom_files"
+        ],
+        "body": [
+            "ctest_read_custom_files(${0})"
+        ]
+    },
+    "ctest_run_script": {
+        "prefix": [
+            "ctest_run_script"
+        ],
+        "body": [
+            "ctest_run_script(${0})"
+        ]
+    },
+    "ctest_sleep": {
+        "prefix": [
+            "ctest_sleep"
+        ],
+        "body": [
+            "ctest_sleep(${0})"
+        ]
+    },
+    "ctest_start": {
+        "prefix": [
+            "ctest_start"
+        ],
+        "body": [
+            "ctest_start(${0})"
+        ]
+    },
+    "ctest_submit": {
+        "prefix": [
+            "ctest_submit"
+        ],
+        "body": [
+            "ctest_submit(${0})"
+        ]
+    },
+    "ctest_test": {
+        "prefix": [
+            "ctest_test"
+        ],
+        "body": [
+            "ctest_test(${0})"
+        ]
+    },
+    "ctest_update": {
+        "prefix": [
+            "ctest_update"
+        ],
+        "body": [
+            "ctest_update(${0})"
+        ]
+    },
+    "ctest_upload": {
+        "prefix": [
+            "ctest_upload"
+        ],
+        "body": [
+            "ctest_upload(${0})"
+        ]
+    },
+    "define_property": {
+        "prefix": [
+            "define_property"
+        ],
+        "body": [
+            "define_property(${0})"
+        ]
+    },
+    "enable_language": {
+        "prefix": [
+            "enable_language"
+        ],
+        "body": [
+            "enable_language(${0})"
+        ]
+    },
+    "enable_testing": {
+        "prefix": [
+            "enable_testing"
+        ],
+        "body": [
+            "enable_testing(${0})"
+        ]
+    },
+    "endforeach": {
+        "prefix": [
+            "endforeach"
+        ],
+        "body": [
+            "endforeach(${0})"
+        ]
+    },
+    "endfunction": {
+        "prefix": [
+            "endfunction"
+        ],
+        "body": [
+            "endfunction(${0})"
+        ]
+    },
+    "endif": {
+        "prefix": [
+            "endif"
+        ],
+        "body": [
+            "endif(${0})"
+        ]
+    },
+    "endmacro": {
+        "prefix": [
+            "endmacro"
+        ],
+        "body": [
+            "endmacro(${0})"
+        ]
+    },
+    "endwhile": {
+        "prefix": [
+            "endwhile"
+        ],
+        "body": [
+            "endwhile(${0})"
+        ]
+    },
+    "exec_program": {
+        "prefix": [
+            "exec_program"
+        ],
+        "body": [
+            "exec_program(${0})"
+        ]
+    },
+    "execute_process": {
+        "prefix": [
+            "execute_process"
+        ],
+        "body": [
+            "execute_process(${0})"
+        ]
+    },
+    "export": {
+        "prefix": [
+            "export"
+        ],
+        "body": [
+            "export(${0})"
+        ]
+    },
+    "export_library_dependencies": {
+        "prefix": [
+            "export_library_dependencies"
+        ],
+        "body": [
+            "export_library_dependencies(${0})"
+        ]
+    },
+    "file": {
+        "prefix": [
+            "file"
+        ],
+        "body": [
+            "file(${0})"
+        ]
+    },
+    "find_file": {
+        "prefix": [
+            "find_file"
+        ],
+        "body": [
+            "find_file(${0})"
+        ]
+    },
+    "find_package": {
+        "prefix": [
+            "find_package"
+        ],
+        "body": [
+            "find_package(${0})"
+        ]
+    },
+    "find_path": {
+        "prefix": [
+            "find_path"
+        ],
+        "body": [
+            "find_path(${0})"
+        ]
+    },
+    "fltk_wrap_ui": {
+        "prefix": [
+            "fltk_wrap_ui"
+        ],
+        "body": [
+            "fltk_wrap_ui(${0})"
+        ]
+    },
+    "foreach": {
+        "prefix": [
+            "foreach"
+        ],
+        "body": [
+            "foreach(${0})"
+        ]
+    },
+    "function": {
+        "prefix": [
+            "function"
+        ],
+        "body": [
+            "function(${0})"
+        ]
+    },
+    "get_cmake_property": {
+        "prefix": [
+            "get_cmake_property"
+        ],
+        "body": [
+            "get_cmake_property(${0})"
+        ]
+    },
+    "get_directory_property": {
+        "prefix": [
+            "get_directory_property"
+        ],
+        "body": [
+            "get_directory_property(${0})"
+        ]
+    },
+    "get_filename_component": {
+        "prefix": [
+            "get_filename_component"
+        ],
+        "body": [
+            "get_filename_component(${0})"
+        ]
+    },
+    "get_property": {
+        "prefix": [
+            "get_property"
+        ],
+        "body": [
+            "get_property(${0})"
+        ]
+    },
+    "get_source_file_property": {
+        "prefix": [
+            "get_source_file_property"
+        ],
+        "body": [
+            "get_source_file_property(${0})"
+        ]
+    },
+    "get_target_property": {
+        "prefix": [
+            "get_target_property"
+        ],
+        "body": [
+            "get_target_property(${0})"
+        ]
+    },
+    "get_test_property": {
+        "prefix": [
+            "get_test_property"
+        ],
+        "body": [
+            "get_test_property(${0})"
+        ]
+    },
+    "if": {
+        "prefix": [
+            "if"
+        ],
+        "body": [
+            "if(${0})"
+        ]
+    },
+    "include_directories": {
+        "prefix": [
+            "include_directories"
+        ],
+        "body": [
+            "include_directories(${0})"
+        ]
+    },
+    "include_external_msproject": {
+        "prefix": [
+            "include_external_msproject"
+        ],
+        "body": [
+            "include_external_msproject(${0})"
+        ]
+    },
+    "include_guard": {
+        "prefix": [
+            "include_guard"
+        ],
+        "body": [
+            "include_guard(${0})"
+        ]
+    },
+    "include_regular_expression": {
+        "prefix": [
+            "include_regular_expression"
+        ],
+        "body": [
+            "include_regular_expression(${0})"
+        ]
+    },
+    "install": {
+        "prefix": [
+            "install"
+        ],
+        "body": [
+            "install(${0})"
+        ]
+    },
+    "install_files": {
+        "prefix": [
+            "install_files"
+        ],
+        "body": [
+            "install_files(${0})"
+        ]
+    },
+    "install_programs": {
+        "prefix": [
+            "install_programs"
+        ],
+        "body": [
+            "install_programs(${0})"
+        ]
+    },
+    "install_targets": {
+        "prefix": [
+            "install_targets"
+        ],
+        "body": [
+            "install_targets(${0})"
+        ]
+    },
+    "link_directories": {
+        "prefix": [
+            "link_directories"
+        ],
+        "body": [
+            "link_directories(${0})"
+        ]
+    },
+    "link_libraries": {
+        "prefix": [
+            "link_libraries"
+        ],
+        "body": [
+            "link_libraries(${0})"
+        ]
+    },
+    "load_cache": {
+        "prefix": [
+            "load_cache"
+        ],
+        "body": [
+            "load_cache(${0})"
+        ]
+    },
+    "load_command": {
+        "prefix": [
+            "load_command"
+        ],
+        "body": [
+            "load_command(${0})"
+        ]
+    },
+    "macro": {
+        "prefix": [
+            "macro"
+        ],
+        "body": [
+            "macro(${0})"
+        ]
+    },
+    "make_directory": {
+        "prefix": [
+            "make_directory"
+        ],
+        "body": [
+            "make_directory(${0})"
+        ]
+    },
+    "mark_as_advanced": {
+        "prefix": [
+            "mark_as_advanced"
+        ],
+        "body": [
+            "mark_as_advanced(${0})"
+        ]
+    },
+    "math": {
+        "prefix": [
+            "math"
+        ],
+        "body": [
+            "math(${0})"
+        ]
+    },
+    "output_required_files": {
+        "prefix": [
+            "output_required_files"
+        ],
+        "body": [
+            "output_required_files(${0})"
+        ]
+    },
+    "qt_wrap_cpp": {
+        "prefix": [
+            "qt_wrap_cpp"
+        ],
+        "body": [
+            "qt_wrap_cpp(${0})"
+        ]
+    },
+    "qt_wrap_ui": {
+        "prefix": [
+            "qt_wrap_ui"
+        ],
+        "body": [
+            "qt_wrap_ui(${0})"
+        ]
+    },
+    "remove": {
+        "prefix": [
+            "remove"
+        ],
+        "body": [
+            "remove(${0})"
+        ]
+    },
+    "remove_definitions": {
+        "prefix": [
+            "remove_definitions"
+        ],
+        "body": [
+            "remove_definitions(${0})"
+        ]
+    },
+    "return": {
+        "prefix": [
+            "return"
+        ],
+        "body": [
+            "return(${0})"
+        ]
+    },
+    "separate_arguments": {
+        "prefix": [
+            "separate_arguments"
+        ],
+        "body": [
+            "separate_arguments(${0})"
+        ]
+    },
+    "set_directory_properties": {
+        "prefix": [
+            "set_directory_properties"
+        ],
+        "body": [
+            "set_directory_properties(${0})"
+        ]
+    },
+    "set_property": {
+        "prefix": [
+            "set_property"
+        ],
+        "body": [
+            "set_property(${0})"
+        ]
+    },
+    "set_source_files_properties": {
+        "prefix": [
+            "set_source_files_properties"
+        ],
+        "body": [
+            "set_source_files_properties(${0})"
+        ]
+    },
+    "set_target_properties": {
+        "prefix": [
+            "set_target_properties"
+        ],
+        "body": [
+            "set_target_properties(${0})"
+        ]
+    },
+    "set_tests_properties": {
+        "prefix": [
+            "set_tests_properties"
+        ],
+        "body": [
+            "set_tests_properties(${0})"
+        ]
+    },
+    "site_name": {
+        "prefix": [
+            "site_name"
+        ],
+        "body": [
+            "site_name(${0})"
+        ]
+    },
+    "source_group": {
+        "prefix": [
+            "source_group"
+        ],
+        "body": [
+            "source_group(${0})"
+        ]
+    },
+    "string": {
+        "prefix": [
+            "string"
+        ],
+        "body": [
+            "string(${0})"
+        ]
+    },
+    "subdir_depends": {
+        "prefix": [
+            "subdir_depends"
+        ],
+        "body": [
+            "subdir_depends(${0})"
+        ]
+    },
+    "subdirs": {
+        "prefix": [
+            "subdirs"
+        ],
+        "body": [
+            "subdirs(${0})"
+        ]
+    },
+    "target_compile_definitions": {
+        "prefix": [
+            "target_compile_definitions"
+        ],
+        "body": [
+            "target_compile_definitions(${0})"
+        ]
+    },
+    "target_compile_options": {
+        "prefix": [
+            "target_compile_options"
+        ],
+        "body": [
+            "target_compile_options(${0})"
+        ]
+    },
+    "target_link_directories": {
+        "prefix": [
+            "target_link_directories"
+        ],
+        "body": [
+            "target_link_directories(${0})"
+        ]
+    },
+    "target_link_options": {
+        "prefix": [
+            "target_link_options"
+        ],
+        "body": [
+            "target_link_options(${0})"
+        ]
+    },
+    "target_sources": {
+        "prefix": [
+            "target_sources"
+        ],
+        "body": [
+            "target_sources(${0})"
+        ]
+    },
+    "try_compile": {
+        "prefix": [
+            "try_compile"
+        ],
+        "body": [
+            "try_compile(${0})"
+        ]
+    },
+    "try_run": {
+        "prefix": [
+            "try_run"
+        ],
+        "body": [
+            "try_run(${0})"
+        ]
+    },
+    "unset": {
+        "prefix": [
+            "unset"
+        ],
+        "body": [
+            "unset(${0})"
+        ]
+    },
+    "use_mangled_mesa": {
+        "prefix": [
+            "use_mangled_mesa"
+        ],
+        "body": [
+            "use_mangled_mesa(${0})"
+        ]
+    },
+    "utility_source": {
+        "prefix": [
+            "utility_source"
+        ],
+        "body": [
+            "utility_source(${0})"
+        ]
+    },
+    "variable_requires": {
+        "prefix": [
+            "variable_requires"
+        ],
+        "body": [
+            "variable_requires(${0})"
+        ]
+    },
+    "variable_watch": {
+        "prefix": [
+            "variable_watch"
+        ],
+        "body": [
+            "variable_watch(${0})"
+        ]
+    },
+    "while": {
+        "prefix": [
+            "while"
+        ],
+        "body": [
+            "while(${0})"
+        ]
+    },
+    "write_file": {
+        "prefix": [
+            "write_file"
+        ],
+        "body": [
+            "write_file(${0})"
+        ]
+    }
+
 
 }
