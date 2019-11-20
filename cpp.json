@@ -1,334 +1,334 @@
 {
-	"for loop": {
-		"prefix" :[
-			"for"
-		],
-		"body" : [
-			"for(auto ${1:i} = ${2:0}; ${1:i} < ${3:n}; ${1:i}++) {",
-                         "   ${0}",
-			"}"
-		]
-	}, 
+    "for loop": {
+        "prefix": [
+            "for"
+        ],
+        "body": [
+            "for(auto ${1:i} = ${2:0}; ${1:i} < ${3:n}; ${1:i}++) {",
+            "   ${0}",
+            "}"
+        ]
+    },
 
-	"for each loop": {
-		"prefix" :[
-			"fore"
-		],
-		"body" : [
-			"for(auto ${1:item} : ${2:container}) {",
-                         "   ${0}",
-			"}"
-		]
-	}, 
+    "for each loop": {
+        "prefix": [
+            "fore"
+        ],
+        "body": [
+            "for(auto ${1:item} : ${2:container}) {",
+            "   ${0}",
+            "}"
+        ]
+    },
 
-	"for structured binding": {
-		"prefix" :[
-			"fors"
-		],
-		"body" : [
-			"for(auto [${1:item}] : ${2:container}) {",
-                         "   ${0}",
-			"}"
-		]
-	}, 
+    "for structured binding": {
+        "prefix": [
+            "fors"
+        ],
+        "body": [
+            "for(auto [${1:item}] : ${2:container}) {",
+            "   ${0}",
+            "}"
+        ]
+    },
 
-	"while loop": {
-		"prefix" :[
-			"while"
-		],
-		"body" : [
-			"while(${1:condition}) {",
-                        "   ${0}",
-			"}"
-		]
-	}, 
+    "while loop": {
+        "prefix": [
+            "while"
+        ],
+        "body": [
+            "while(${1:condition}) {",
+            "   ${0}",
+            "}"
+        ]
+    },
 
     "do while loop": {
-		"prefix" :[
-			"do",
-			"dow"
-		],
-		"body" : [
-			"do {",
-                        "   ${0}",
-			"} while(${1:condition});"
-		]
-	}, 
+        "prefix": [
+            "do",
+            "dow"
+        ],
+        "body": [
+            "do {",
+            "   ${0}",
+            "} while(${1:condition});"
+        ]
+    },
 
-	"if statement": {
-		"prefix" : [
-			"if"
-		],
-		"body": [
-			"if(${1:cond}) {",
-				"${2}",
-			"} ${0}"
-		]
-	},
+    "if statement": {
+        "prefix": [
+            "if"
+        ],
+        "body": [
+            "if(${1:cond}) {",
+            "${2}",
+            "} ${0}"
+        ]
+    },
 
-	"if with initializer": {
-		"prefix" : [
-			"ifi"
-		],
-		"body": [
-			"if(${1:var}; ${2:cond}) {",
-				"${0}",
-			"}"
-		]
-	},
+    "if with initializer": {
+        "prefix": [
+            "ifi"
+        ],
+        "body": [
+            "if(${1:var}; ${2:cond}) {",
+            "${0}",
+            "}"
+        ]
+    },
 
     "compile-time if with initializer": {
-		"prefix" : [
-			"if constexpr"
-		],
-		"body": [
-			"if constexpr(${1:var}; ${2:cond}) {",
-				"${0}",
-			"}"
-		]
-	},
+        "prefix": [
+            "if constexpr"
+        ],
+        "body": [
+            "if constexpr(${1:var}; ${2:cond}) {",
+            "${0}",
+            "}"
+        ]
+    },
 
     "else statement": {
-		"prefix" : [
-			"else"
-		],
-		"body": [
-			"else {",
-				"${0}",
-			"}"
-		]
-	},
+        "prefix": [
+            "else"
+        ],
+        "body": [
+            "else {",
+            "${0}",
+            "}"
+        ]
+    },
 
     "switch statement": {
-		"prefix" : [
-			"switch"
-		],
-		"body": [
-			"switch(${1:cond}) {",
-				"${0}",
-			"}"
-		]
-	},
+        "prefix": [
+            "switch"
+        ],
+        "body": [
+            "switch(${1:cond}) {",
+            "${0}",
+            "}"
+        ]
+    },
 
     "case": {
-		"prefix" : [
-			"case"
-		],
-		"body": [
-			"case ${1:expression}:",
-				"${0}",
-				"break;"
-		]
-	},
+        "prefix": [
+            "case"
+        ],
+        "body": [
+            "case ${1:expression}:",
+            "${0}",
+            "break;"
+        ]
+    },
 
-	"main function without args": {
-		"prefix" : [
-			"main" 
-		],
-		"body": [
-			"int main() {",
-			"${0}",
-			"}"
-		]
-	},
+    "main function without args": {
+        "prefix": [
+            "main"
+        ],
+        "body": [
+            "int main() {",
+            "${0}",
+            "}"
+        ]
+    },
 
     "main function with args": {
-		"prefix" : [
-			"maina" 
-		],
-		"body": [
-			"int main(int argc, const char *argv[]) {",
-			"   ${0}",
-			"}"
-		]
-	},
+        "prefix": [
+            "maina"
+        ],
+        "body": [
+            "int main(int argc, const char *argv[]) {",
+            "   ${0}",
+            "}"
+        ]
+    },
 
-   "struct": {
-		"prefix" : [
-			"struct"
-		],
-		"body": [
-			"struct ${1:name} { ${0} };"
-		]
-	},
+    "struct": {
+        "prefix": [
+            "struct"
+        ],
+        "body": [
+            "struct ${1:name} { ${0} };"
+        ]
+    },
 
-	"class" : {
-		"prefix" : [
-			"class" 
-		], 
-		"body": [
-			"class ${1:name}",
-			"{",
-               "public:",
-			    "${0}",
-			"};"
-		]
-	},
-	
-	"static-cast" : {
-		"prefix" : [
-			"static_cast"
-		], 
-		"body": [
-			"static_cast<${1:type}>(${2:var}) ${0}"
-		]
-	},
+    "class": {
+        "prefix": [
+            "class"
+        ],
+        "body": [
+            "class ${1:name}",
+            "{",
+            "public:",
+            "${0}",
+            "};"
+        ]
+    },
 
-    "const-cast" : {
-		"prefix" : [
-			"const_cast"
-		], 
-		"body": [
-			"const_cast<${1:type}>(${2:var}) ${0}"
-		]
-	},
-	
-    "template" : {
-		"prefix" : [
-			"template"
-		], 
-		"body": [
-			"template <typename T>",
-			"typename std::enable_if_t<std::${1:sometrait}_v<T>, T>",
-			"${3:function(T s)}"
-		],
-		"description": "enable if in return type, _t ad _v requires c++14"
-	},
-	
+    "static-cast": {
+        "prefix": [
+            "static_cast"
+        ],
+        "body": [
+            "static_cast<${1:type}>(${2:var}) ${0}"
+        ]
+    },
+
+    "const-cast": {
+        "prefix": [
+            "const_cast"
+        ],
+        "body": [
+            "const_cast<${1:type}>(${2:var}) ${0}"
+        ]
+    },
+
+    "template": {
+        "prefix": [
+            "template"
+        ],
+        "body": [
+            "template <typename T>",
+            "typename std::enable_if_t<std::${1:sometrait}_v<T>, T>",
+            "${3:function(T s)}"
+        ],
+        "description": "enable if in return type, _t ad _v requires c++14"
+    },
+
     "variadic template usage": {
-		"prefix" :[
-			"variadic"
-		],
-		"body" : [
-                "template <typename ... Args>",
-		"auto make_vector(const Args& ... elems) {",
-		"return std::vector(elems ...); }"
-		],
-		"description": "reminder for usage of the variadic template"
-	},
+        "prefix": [
+            "variadic"
+        ],
+        "body": [
+            "template <typename ... Args>",
+            "auto make_vector(const Args& ... elems) {",
+            "return std::vector(elems ...); }"
+        ],
+        "description": "reminder for usage of the variadic template"
+    },
 
-    "enumaration" : {
-		"prefix" : [
-			"enum"
-		], 
-		"body": [
-			"enum class ${1:name} { ${0} };"
-		]
-	},
+    "enumaration": {
+        "prefix": [
+            "enum"
+        ],
+        "body": [
+            "enum class ${1:name} { ${0} };"
+        ]
+    },
 
-	"variant" : {
-		"prefix" : [
-			"variant"
-		], 
-		"body": [
-			"std::variant<${1:type}, ${2:type}> ${3:name};"
-		],
-		"description": "std::variant defined in <variant> "
-	},
+    "variant": {
+        "prefix": [
+            "variant"
+        ],
+        "body": [
+            "std::variant<${1:type}, ${2:type}> ${3:name};"
+        ],
+        "description": "std::variant defined in <variant> "
+    },
 
-    "preprocessor condition" : {
-		"prefix" : [
-			"#if",
-			"guard"
-		], 
-		"body": [
-			"#ifndef ${1:foo}",
-			"#define ${1:foo}",
-			"#endif"
-		]
-	}, 
+    "preprocessor condition": {
+        "prefix": [
+            "#if",
+            "guard"
+        ],
+        "body": [
+            "#ifndef ${1:foo}",
+            "#define ${1:foo}",
+            "#endif"
+        ]
+    },
 
-    "has_include macro" : {
-		"prefix" : [
-			"__has_include",
-			"has_include"
-		], 
-		"body": [
-			"#if __has_include(<${1:header}>)",
-			 "  #include <${1}>",
-			"#endif",
-			"   ${0}"
-		],
-		"description": "__has_include is a C++17 feature"
-	}, 
+    "has_include macro": {
+        "prefix": [
+            "__has_include",
+            "has_include"
+        ],
+        "body": [
+            "#if __has_include(<${1:header}>)",
+            "  #include <${1}>",
+            "#endif",
+            "   ${0}"
+        ],
+        "description": "__has_include is a C++17 feature"
+    },
 
 
-	"lambda expression": {
-		"prefix" : [
-			"lambda"
-		],
-		"body": [
-           "[${1}](${2}){${3}};"
-		]
-	},
+    "lambda expression": {
+        "prefix": [
+            "lambda"
+        ],
+        "body": [
+            "[${1}](${2}){${3}};"
+        ]
+    },
 
-	"static assertion": {
-		"prefix" : [
-			"static_assert"
-		],
-		"body": [
-           "static_assert(${1});"
-		],
-		"description": "static assert witout message is a C++17 feature"
-	},
+    "static assertion": {
+        "prefix": [
+            "static_assert"
+        ],
+        "body": [
+            "static_assert(${1});"
+        ],
+        "description": "static assert witout message is a C++17 feature"
+    },
 
     "noreturn attribute": {
-		"prefix" :[
-			"noreturn"
-		],
-		"body" : [
-                "[[noreturn]] ${0}"
-		]
-	} ,
+        "prefix": [
+            "noreturn"
+        ],
+        "body": [
+            "[[noreturn]] ${0}"
+        ]
+    },
 
-   "deprecated attribute": {
-		"prefix" :[
-			"deprecated"
-		],
-		"body" : [
-                "[[deprecated]] ${0}"
-		]
-	} ,
+    "deprecated attribute": {
+        "prefix": [
+            "deprecated"
+        ],
+        "body": [
+            "[[deprecated]] ${0}"
+        ]
+    },
 
 
-	"nodiscard attribute": {
-		"prefix" :[
-			"nodiscard"
-		],
-		"body" : [
-                "[[nodiscard]] ${0}"
-		]
-	} ,
+    "nodiscard attribute": {
+        "prefix": [
+            "nodiscard"
+        ],
+        "body": [
+            "[[nodiscard]] ${0}"
+        ]
+    },
 
-   "fallthrough attribute": {
-		"prefix" :[
-			"fallthrough"
-		],
-		"body" : [
-                "[[fallthrough]] ${0}"
-		],
-		"description": "use this with the switch-case statement"
-	},
+    "fallthrough attribute": {
+        "prefix": [
+            "fallthrough"
+        ],
+        "body": [
+            "[[fallthrough]] ${0}"
+        ],
+        "description": "use this with the switch-case statement"
+    },
 
     "maybe_unused attribute": {
-		"prefix" :[
-			"maybe_unused"
-		],
-		"body" : [
-                "[[maybe_unused]] ${0}"
-		]
-	}, 
+        "prefix": [
+            "maybe_unused"
+        ],
+        "body": [
+            "[[maybe_unused]] ${0}"
+        ]
+    },
 
-  	"try-catch block" : {
-		"prefix" :[
-			"try"
-		],
-		"body" : [
-                "try {",
-                "    ${1}",
-		"} catch (...) {",
-		"    ${2}", 
-		"}"
-		]
-	} 
+    "try-catch block": {
+        "prefix": [
+            "try"
+        ],
+        "body": [
+            "try {",
+            "    ${1}",
+            "} catch (...) {",
+            "    ${2}",
+            "}"
+        ]
+    }
 }
