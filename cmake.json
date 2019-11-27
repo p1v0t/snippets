@@ -52,7 +52,8 @@
             "target_link_libraries"
         ],
         "body": [
-            "target_link_libraries(${1} PRIVATE ${2})"
+            "target_link_libraries(${1:target} ${2:PRIVATE|PUBLIC|INTERFACE}",
+			"   	${3:item})"
         ]
     },
     "target_compile_features": {
@@ -60,8 +61,66 @@
             "target_compile_features"
         ],
         "body": [
-            "target_compile_features(${1:myLibrary} PUBLIC cxx_constexpr cxx_std_17 ${2:otherOptions})"
-        ]
+            "target_compile_features(${1:target} ${2:PRIVATE|PUBLIC|INTERFACE}",
+			"cxx_std_${3:98|11|14|17|20}",
+			"cxx_aggregate_default_initializers",
+			"cxx_alias_templates",
+			"cxx_alignas",
+			"cxx_alignof",
+			"cxx_attributes",
+			"cxx_attribute_deprecated",
+			"cxx_auto_type",
+			"cxx_constexpr",
+			"cxx_contextual_conversions",
+			"cxx_decltype_incomplete_return_types",
+			"cxx_decltype",
+			"cxx_decltype_auto",
+			"cxx_default_function_template_args",
+			"cxx_defaulted_functions",
+			"cxx_defaulted_move_initializers",
+			"cxx_delegating_constructors",
+			"cxx_deleted_functions",
+			"cxx_digit_separators",
+			"cxx_enum_forward_declarations",
+			"cxx_explicit_conversions",
+			"cxx_extended_friend_declarations",
+			"cxx_extern_templates",
+			"cxx_final",
+			"cxx_func_identifier",
+			"cxx_generalized_initializers",
+			"cxx_generic_lambdas",
+			"cxx_inheriting_constructors",
+			"cxx_inline_namespaces",
+			"cxx_lambdas",
+			"cxx_lambda_init_captures",
+			"cxx_local_type_template_args",
+			"cxx_long_long_types",
+			"cxx_noexcept",
+			"cxx_nonstatic_member_init",
+			"cxx_nullptr",
+			"cxx_override",
+			"cxx_range_for",
+			"cxx_raw_string_literals",
+			"cxx_reference_qualified_functions",
+			"cxx_relaxed_constexpr",
+			"cxx_return_type_deduction",
+			"cxx_right_angle_brackets",
+			"cxx_rvalue_references",
+			"cxx_sizeof_member",
+			"cxx_static_assert",
+			"cxx_strong_enums",
+			"cxx_thread_local",
+			"cxx_trailing_return_types",
+			"cxx_unicode_literals",
+			"cxx_uniform_initialization",
+			"cxx_unrestricted_unions",
+			"cxx_user_literals",
+			"cxx_variable_templates",
+			"cxx_variadic_macros",
+			"cxx_variadic_templates",
+			"cxx_template_template_parameter)"
+        ],
+		"description": "overkill usage for snippets, but deleting is easier than typing"
     },
 
     "target_include_directories": {
@@ -304,15 +363,16 @@
             "set(FETCHCONTENT_QUIET ON)",
 
             "FetchContent_Declare(${1:dependency}",
-            "    GIT_REPOSITORY https://www.github.com/address/toRepo",
+            "    GIT_REPOSITORY https://www.github.com/${2:address/toRepo}",
             "    GIT_TAG",
             "    GIT_PROGRESS OFF",
             "    GIT_SHALLOW ON )",
             "",
             "FetchContent_GetProperties(${1:dependency})",
             "if(NOT ${1:dependency}_POPULATED)",
-            "    FetchContent_Populate(${1:dependency} QUITE)",
-            "    add_subdirectory(${${1:dependency}_SOURCE_DIR} ${${1:dependency}_BINARY_DIR)}",
+            "    FetchContent_Populate(${1:dependency})",
+            "    add_subdirectory(${${1:dependency}_SOURCE_DIR} EXCLUDE_FROM_ALL)",
+		    "    add_subdirectory(${${1:dependency}_BINARY_DIR} EXCLUDE_FROM_ALL)",
             "endif()"
         ]
     },
@@ -1080,7 +1140,8 @@
             "target_compile_definitions"
         ],
         "body": [
-            "target_compile_definitions(${0})"
+            "target_compile_definitions(${1:target} ${2:PRIVATE|PUBLIC|INTERFACE}",
+		    "    ${3:items})"
         ]
     },
     "target_compile_options": {
@@ -1088,7 +1149,8 @@
             "target_compile_options"
         ],
         "body": [
-            "target_compile_options(${0})"
+            "target_compile_options(${1:target} ${2:PRIVATE|PUBLIC|INTERFACE}",
+		    "    ${3:items})"
         ]
     },
     "target_link_directories": {
@@ -1096,7 +1158,8 @@
             "target_link_directories"
         ],
         "body": [
-            "target_link_directories(${0})"
+            "target_link_directories(${1:target} [BEFORE] ${2:PRIVATE|PUBLIC|INTERFACE}",
+		    "    ${3:items})"
         ]
     },
     "target_link_options": {
@@ -1104,7 +1167,8 @@
             "target_link_options"
         ],
         "body": [
-            "target_link_options(${0})"
+            "target_link_options(${1:target} [BEFORE] ${2:PRIVATE|PUBLIC|INTERFACE}",
+		    "    ${3:items})"
         ]
     },
     "target_sources": {
