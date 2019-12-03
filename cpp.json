@@ -164,6 +164,27 @@
             "};"
         ]
     },
+    "class defaulted": {
+        "prefix": [
+            "classd"
+        ],
+        "body": [
+            "class ${1:name}",
+            "{",
+            "public:",
+            "${1:name}() = default;",
+            "~${1:name}() = default;",
+            " ",
+            "${1:name}(const ${1:name} &other) = default;",
+            "${1:name}& operator=(const ${1:name} &rhs) = default;",
+            " ",
+            "${1:name}(${1:name} &&other) = default;",
+            "${1:name}& operator=(${1:name} &&rhs) = default;",
+            "${0}",
+            "};"
+        ]
+    },
+
 
     "static-cast": {
         "prefix": [
@@ -269,7 +290,7 @@
         "body": [
             "static_assert(${1});"
         ],
-        "description": "static assert witout message is a C++17 feature"
+        "description": "static assert without message is a C++17 feature"
     },
 
     "noreturn attribute": {
