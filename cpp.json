@@ -213,7 +213,7 @@
             "typename std::enable_if_t<std::${1:sometrait}_v<T>, T>",
             "${3:function(T s)}"
         ],
-        "description": "enable if in return type, _t ad _v requires c++14"
+        "description": "enable if in return type, _t ad _v might requires c++14"
     },
 
     "variadic template usage": {
@@ -221,6 +221,12 @@
             "variadic"
         ],
         "body": [
+            "// <typename ...T> pack type args to T",
+            "// <T ...t> unpack T when generating class or func template",
+            "// T ...t pack function arg to T",
+            "// func(t...) unpack variable t and call func",
+            "// sizeof... number of a pack",
+			" ",
             "template <typename ... Args>",
             "auto make_vector(const Args& ... elems) {",
             "return std::vector(elems ...); }"
