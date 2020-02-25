@@ -1,4 +1,40 @@
 {
+	"starter": {
+        "prefix": [
+			"starter"
+		],
+
+		"body": [
+            "cmake_minimum_required(VERSION 3.15 FATAL_ERROR)", 
+			"project(${1:starterProject} LANGUAGES CXX)",
+            "set(CMAKE_EXPORT_COMPILE_COMMANDS ON)",
+            "",
+			"if(NOT EXISTS \"${CMAKE_BINARY_DIR}/conan.cmake\")",
+            "   file(DOWNLOAD \"https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake\" ${CMAKE_BINARY_DIR}/conan.cmake)",
+            "endif()",
+            "",
+            "include(${CMAKE_BINARY_DIR}/conan.cmake)",
+			"conan_check(VERSION 1.21.0 REQUIRED)",
+            "",
+			"conan_add_remote(NAME bincrafters INDEX 1 URL https://api.bintray.com/conan/bincrafters/public-conan)",
+            "",
+            "conan_cmake_run(REQUIRES ${2:Hello}/0.1@memsharded/testing",
+		    "    OPTIONS ${2:Hello}:shared=True",
+            "    BASIC_SETUP",
+            "    CMAKE_TARGETS",
+            "    BUILD missing)",
+            "",
+            "add_executable(${3:output} main.cpp)",
+			"target_link_libraries(output PUBLIC CONAN_PKG::${2:Hello})",
+			"target_include_directories(output PUBLIC CONAN_INCLUDE_DIRS_${2:Hello})",
+            "",
+			"add_custom_command(TARGET ${3:output}",
+            "       COMMAND ${3:output}",
+            "       POST_BUILD",
+            "       USES_TERMINAL)"
+        ]
+
+	},
     "minimum cmake requirement": {
         "prefix": [
             "cmake_minimum"
