@@ -357,5 +357,29 @@
             "    ${2}",
             "}"
         ]
-    }
+    },
+
+    "basic platform macros": {
+        "prefix": [
+			"platform",
+			"Linux",
+			"Windows",
+			"Apple",
+			"BSD"],
+			"body": [
+				"#if defined (_WIN32)",
+				"#elif defined (__APPLE__) && defined (__MACH__)",
+				"#elif defined (__unix__)",
+				"    #if defined (__ANDROID__)",
+				"    #elif defined(__linux__)",
+				"    #elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__)",
+				"    #elif defined(__OpenBSD__)",
+				"    #else",
+				"        #error Some other UNIX",
+				"    #endif",
+				"#else",
+				"    #error Some other OS",
+				"#endif"
+			]
+	}
 }
