@@ -152,12 +152,26 @@
         ]
     },
 
-    "class": {
+    "class inherited": {
+        "prefix": [
+            "classi"
+        ],
+        "body": [
+            "class ${1:name} : public ${2:fatherClass} ",
+            "{",
+            "public:",
+            "${0}",
+            "};"
+        ]
+    },
+
+
+    "class leaf": {
         "prefix": [
             "class"
         ],
         "body": [
-            "class ${1:name}",
+            "class ${1:name} final",
             "{",
             "public:",
             "${0}",
