@@ -189,11 +189,11 @@
             "${1:name}() = default;",
             "~${1:name}() = default;",
             " ",
-            "${1:name}(const ${1:name} &other) = default;",
-            "${1:name}& operator=(const ${1:name} &rhs) = default;",
+            "${1:name}(const ${1:name} &other) noexcept = default;",
+            "${1:name}& operator=(const ${1:name} &rhs) noexcept = default;",
             " ",
-            "${1:name}(${1:name} &&other) = default;",
-            "${1:name}& operator=(${1:name} &&rhs) = default;",
+            "${1:name}(${1:name} &&other) noexcept = default;",
+            "${1:name}& operator=(${1:name} &&rhs) noexcept = default;",
             "${0}",
             "};"
         ]
@@ -395,5 +395,18 @@
 				"    #error Some other OS",
 				"#endif"
 			]
-	}
+	},
+
+    "Doxygen comment": {
+        "prefix": [
+            "function comment"
+        ],
+        "body": [
+            "/*!",
+            " @brief ${1}",
+            " @param ${2}",
+            " @return ${3}",
+            "*/"
+        ]
+    }
 }
