@@ -35,12 +35,21 @@
         ]
 
 	},
-    "minimum cmake requirement": {
+
+    "cmake": {
         "prefix": [
-            "cmake_minimum"
+            "cmake"
         ],
         "body": [
-            "cmake_minimum_required(VERSION ${1:version})"
+            "cmake_minimum_required(VERSION ${1:version})",
+			 "",
+            "project(${2:projname}",
+            "DESCRIPTION \"${3:description}\"",
+            "HOMEPAGE_URL https://github.com/p1v0t/${4:reponame}",
+            "LANGUAGES CXX)",
+			"",
+            "set(CMAKE_EXPORT_COMPILE_COMMANDS ON)",
+            "${0}"
         ]
     },
 
