@@ -101,7 +101,7 @@
             "# A PUBLIC B: A uses B as an implementation detail but also its interface",
             "# A INTERFACE B: A uses interface of the B, A must have B to be used",
             "target_link_libraries(${1:target} ${2:PRIVATE|PUBLIC|INTERFACE}",
-            "   	${3:item})"
+            "  ${3:dependency})"
         ]
     },
     "target_compile_features": {
@@ -185,7 +185,7 @@
             "target_include_directories"
         ],
         "body": [
-            "target_include_directories(${1:target} PUBLIC ${2:directory})"
+            "target_include_directories(${1:target} PUBLIC ${2:include_search_dir})"
         ]
     },
 
@@ -1197,7 +1197,7 @@
         ],
         "body": [
             "target_compile_definitions(${1:target} ${2:PRIVATE|PUBLIC|INTERFACE}",
-            "    ${3:items})"
+            "    ${3:macro_definitions})"
         ]
     },
     "target_compile_options": {
@@ -1206,7 +1206,7 @@
         ],
         "body": [
             "target_compile_options(${1:target} ${2:PRIVATE|PUBLIC|INTERFACE}",
-            "    ${3:items})"
+            "    ${3:compiler_options})"
         ]
     },
     "target_link_directories": {
@@ -1215,7 +1215,7 @@
         ],
         "body": [
             "target_link_directories(${1:target} [BEFORE] ${2:PRIVATE|PUBLIC|INTERFACE}",
-            "    ${3:items})"
+            "    ${3:linker_search_dir})"
         ]
     },
     "target_link_options": {
@@ -1224,7 +1224,7 @@
         ],
         "body": [
             "target_link_options(${1:target} [BEFORE] ${2:PRIVATE|PUBLIC|INTERFACE}",
-            "    ${3:items})"
+            "    ${3:linker_options})"
         ]
     },
     "target_sources": {
