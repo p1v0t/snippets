@@ -36,6 +36,18 @@
 
 	},
 
+    "compilerid": {
+        "prefix": [
+            "compilerid_check"
+        ],
+        "body": [
+            "if(CMAKE_CXX_COMPILER_ID MATCHES GNU)",
+			"elseif(CMAKE_CXX_COMPILER_ID MATCHES CLANG)",
+			"elseif(MSVC)",
+			"endif()"
+        ]
+    },
+
     "cmake": {
         "prefix": [
             "cmake"
@@ -45,7 +57,7 @@
 			 "",
             "project(${2:projname}",
             "DESCRIPTION \"${3:description}\"",
-            "HOMEPAGE_URL https://github.com/p1v0t/${4:reponame}",
+            "HOMEPAGE_URL https://github.com/adembudak/${4:reponame}",
             "LANGUAGES CXX)",
 			"",
             "set(CMAKE_EXPORT_COMPILE_COMMANDS ON)",
@@ -60,7 +72,7 @@
         "body": [
             "project(${1:projname}",
             "DESCRIPTION \"${2:description}\"",
-            "HOMEPAGE_URL https://github.com/p1v0t/${3:reponame}",
+            "HOMEPAGE_URL https://github.com/adembudak/${3:reponame}",
             "LANGUAGES CXX)"
         ]
     },
